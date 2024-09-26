@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:uzaar_market/signup.dart';
 
 class Boarding extends StatefulWidget {
   const Boarding({super.key});
@@ -16,15 +17,19 @@ class _BoardingState extends State<Boarding> {
   final List<Map<String, String>> onboardingData = [
     {
       'image': 'assets/images/first.svg',
-      'description': 'Welcome to the first screen! This is an amazing app.',
+      'title': "Sell Here",
+      'description':
+          'Have a product or service to sell, list on Elegit. And grow yourself.',
     },
     {
       'image': 'assets/images/first.svg',
+      'title': "Buy Goods and Services",
       'description':
           'Explore various features of the app in the second screen.',
     },
     {
       'image': 'assets/images/first.svg',
+      'title': "Seller Location Verification",
       'description': 'Get started with your journey in the third screen.',
     },
   ];
@@ -44,24 +49,40 @@ class _BoardingState extends State<Boarding> {
               });
             },
             itemBuilder: (context, index) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    onboardingData[index]['image']!,
-                    height: 300,
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    onboardingData[index]['description']!,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
+              return Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      onboardingData[index]['image']!,
+                      height: 300,
                     ),
-                  ),
-                ],
+                    // const SizedBox(height: 90),
+
+                    Text(
+                      onboardingData[index]['title']!,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      onboardingData[index]['description']!,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
               );
             },
           ),
@@ -95,10 +116,10 @@ class _BoardingState extends State<Boarding> {
                   onPressed: () {
                     if (currentPageIndex == onboardingData.length - 1) {
                       // Navigate to the next screen or finish the onboarding
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const HomePage()),
-                      // );
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Signup()),
+                      );
                     } else {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 500),
@@ -108,7 +129,7 @@ class _BoardingState extends State<Boarding> {
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 15),
+                        horizontal: 140, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
