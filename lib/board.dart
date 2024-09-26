@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:uzaar_market/screen1.dart';
-import 'package:uzaar_market/screen2.dart';
-import 'package:uzaar_market/screen3.dart';
-// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class boarding extends StatefulWidget {
-  const boarding({super.key});
+class Boarding extends StatefulWidget {
+  const Boarding({super.key});
 
   @override
-  State<boarding> createState() => _boardingState();
+  State<Boarding> createState() => _BoardingState();
 }
 
-class _boardingState extends State<boarding> {
+class _BoardingState extends State<Boarding> {
   PageController pageController = PageController();
-  // String buttonText = 'Next';
   int currentPageIndex = 0;
+
+  final List<Map<String, String>> onboardingData = [
+    {
+      'image': 'assets/images/first.svg',
+      'description': 'Welcome to the first screen! This is an amazing app.',
+    },
+    {
+      'image': 'assets/images/first.svg',
+      'description':
+          'Explore various features of the app in the second screen.',
+    },
+    {
+      'image': 'assets/images/first.svg',
+      'description': 'Get started with your journey in the third screen.',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,31 +35,45 @@ class _boardingState extends State<boarding> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          PageView(
+          PageView.builder(
             controller: pageController,
-            // onPageChanged: (index) {
-            //   setState(() {
-            //     currentPageIndex = index;
-            //     buttonText = (index == 3) ? 'Finish' : 'Next';
-            //   });
-            // },
-            children: const [
-              screen1(),
-              screen2(),
-              screen3(),
-            ],
+            itemCount: onboardingData.length,
+            onPageChanged: (index) {
+              setState(() {
+                currentPageIndex = index;
+              });
+            },
+            itemBuilder: (context, index) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    onboardingData[index]['image']!,
+                    height: 300,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    onboardingData[index]['description']!,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
-          Container(
-            alignment: const Alignment(0, 0.4),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Positioned(
+            bottom: 100,
+            left: 0,
+            right: 0,
+            child: Column(
               children: [
-                // const SizedBox(
-                //   width: 2,
-                // ),
                 SmoothPageIndicator(
                   controller: pageController,
-                  count: 3,
+                  count: onboardingData.length,
                   effect: CustomizableEffect(
                     activeDotDecoration: DotDecoration(
                       width: 40,
@@ -64,28 +90,40 @@ class _boardingState extends State<boarding> {
                     spacing: 8,
                   ),
                 ),
-
-                // GestureDetector(
-                //   onTap: () {
-                //     if (currentPageIndex == 3) {
-                //       // Action when "Finish" is pressed, e.g., navigate to another page
-                //       Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //             builder: (context) => const ()),
-                //       );
-                //     } else {
-                //       pageController.nextPage(
-                //         duration: const Duration(milliseconds: 500),
-                //         curve: Curves.easeIn,
-                //       );
-                //     }
-                //   },
-                //   child: Text(
-                //     buttonText,
-                //     style: const TextStyle(fontWeight: FontWeight.bold),
-                //   ),
-                // ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    if (currentPageIndex == onboardingData.length - 1) {
+                      // Navigate to the next screen or finish the onboarding
+                      // Navigator.pushReplacement(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const HomePage()),
+                      // );
+                    } else {
+                      pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn,
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    backgroundColor: Colors.purple,
+                  ),
+                  child: Text(
+                    currentPageIndex == onboardingData.length - 1
+                        ? 'Get Started'
+                        : 'Next',
+                    style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
               ],
             ),
           ),
