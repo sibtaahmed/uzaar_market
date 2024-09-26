@@ -8,7 +8,7 @@ class screen1 extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/images/Logo.png'),
+        Image.asset('assets/images/Slider1.svg'),
         const SizedBox(
           height: 40,
         ),
