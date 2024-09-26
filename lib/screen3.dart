@@ -1,58 +1,130 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class screen3 extends StatelessWidget {
-  const screen3({super.key});
+class Boarding extends StatefulWidget {
+  const Boarding({super.key});
+
+  @override
+  State<Boarding> createState() => _BoardingState();
+}
+
+class _BoardingState extends State<Boarding> {
+  PageController pageController = PageController();
+  int currentPageIndex = 0;
+
+  final List<Map<String, String>> onboardingData = [
+    {
+      'image': 'assets/images/first.svg',
+      'description': 'Welcome to the first screen! This is an amazing app.',
+    },
+    {
+      'image': 'assets/images/first.svg',
+      'description': 'Explore various features of the app in the second screen.',
+    },
+    {
+      'image': 'assets/images/first.svg',
+      'description': 'Get started with your journey in the third screen.',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset(
-          "assets/images/first.svg",
-        ),
-        // Image.asset('assets/images/Slider1.svg'),
-        const SizedBox(
-          height: 40,
-        ),
-        const Text(
-          'Sell Here',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-        ),
-        const Padding(
-          padding: EdgeInsets.all(40.0),
-          child: Text(
-            'Have a product or service to sell, list on Elegit. And grow yourself.',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: pageController,
+            itemCount: onboardingData.length,
+            onPageChanged: (index) {
+              setState(() {
+                currentPageIndex = index;
+              });
+            },
+            itemBuilder: (context, index) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    onboardingData[index]['image']!,
+                    height: 300,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    onboardingData[index]['description']!,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
-        ),
-        const SizedBox(
-          height: 150,
-        ),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.deepPurpleAccent,
-              shadowColor: Colors.black,
-              elevation: 5,
-              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-            ),
-            child: const Center(
-              child: Text(
-                'Continue',
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
+          Positioned(
+            bottom: 100,
+            left: 0,
+            right: 0,
+            child: Column(
+              children: [
+                SmoothPageIndicator(
+                  controller: pageController,
+                  count: onboardingData.length,
+                  effect: CustomizableEffect(
+                    activeDotDecoration: DotDecoration(
+                      width: 40,
+                      height: 15,
+                      color: Colors.purple,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    dotDecoration: DotDecoration(
+                      width: 40,
+                      height: 15,
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    spacing: 8,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    if (currentPageIndex == onboardingData.length - 1) {
+                      // Navigate to the next screen or finish the onboarding
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const HomePage()),
+                      );
+                    } else {
+                      pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn,
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    backgroundColor: Colors.purple,
+                  ),
+                  child: Text(
+                    currentPageIndex == onboardingData.length - 1 ? 'Get Started' : 'Next',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
