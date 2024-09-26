@@ -10,28 +10,45 @@ class screen1 extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SvgPicture.asset(
-          "assets/images/Slider1.svg",
+          "assets/images/first.svg",
         ),
         // Image.asset('assets/images/Slider1.svg'),
         const SizedBox(
           height: 40,
         ),
         const Text(
-          'Screen 1',
-          style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24),
+          'Sell Here',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(40.0),
+          child: Text(
+            'Have a product or service to sell, list on Elegit. And grow yourself.',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+          ),
         ),
         const SizedBox(
-          height: 20,
+          height: 150,
         ),
-        Container(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
-            child: Text(
-              'We need to work hard,We need to work hard,We need to work hard,We need to work hard,We need to work hard,We need to work hard',
-              style:
-                  TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 16),
-              textAlign: TextAlign.center,
+
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepPurpleAccent,
+              shadowColor: Colors.black,
+              elevation: 5,
+              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+            ),
+            child: const Center(
+              child: Text(
+                'Continue',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
             ),
           ),
         ),
