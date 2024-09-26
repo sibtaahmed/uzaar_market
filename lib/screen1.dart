@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class screen1 extends StatelessWidget {
   const screen1({super.key});
@@ -8,7 +9,10 @@ class screen1 extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/images/Logo.png'),
+        SvgPicture.asset(
+          "assets/images/Slider1.svg",
+        ),
+        // Image.asset('assets/images/Logo.png'),
         const SizedBox(
           height: 40,
         ),
