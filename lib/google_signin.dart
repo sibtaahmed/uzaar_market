@@ -12,8 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 
-import 'src/sign_in_button.dart';
-
 /// The scopes required by this application.
 // #docregion Initialize
 const List<String> scopes = <String>[
@@ -209,9 +207,9 @@ class _SignInDemoState extends State<SignInDemo> {
           const Text('You are not currently signed in.'),
           // This method is used to separate mobile from web code with conditional exports.
           // See: src/sign_in_button.dart
-          buildSignInButton(
-            onPressed: _handleSignIn,
-          ),
+          ElevatedButton(
+              onPressed: _handleSignIn,
+              child: const Text("Sign in with Google")),
         ],
       );
     }

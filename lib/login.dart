@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hugeicons/hugeicons.dart';
-import 'package:uzaar_market/google_signin.dart';
-import 'package:uzaar_market/login.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/resetpassword.dart';
+import 'package:uzaar_market/signup.dart';
+import 'package:uzaar_market/verifyemail.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<Signup> createState() => _SignupState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignupState extends State<Signup> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,76 +38,13 @@ class _SignupState extends State<Signup> {
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text(
-                          'Sign Up',
+                          'Login',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 25),
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'First Name',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        label: const Text(
-                          'First Name',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25),
-                            borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 21, 21, 21))),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 21, 21, 22),
-                            width: 1.0,
-                          ),
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.person_2_rounded,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Last Name',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        label: const Text(
-                          'Last Name',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25),
-                            borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 21, 21, 21))),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: const BorderSide(
-                            color: Color.fromARGB(255, 21, 21, 22),
-                            width: 1.0,
-                          ),
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.person_2_rounded,
-                          color: Colors.grey,
-                        ),
-                        // suffixIcon: Icon(
-                        //   Icons.upload_file_rounded,
-                        //   color: Colors.white,
-                        // ),
-                      ),
-                    ),
+
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
@@ -173,11 +110,41 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Forget Password?',
+                          style: TextStyle(fontSize: 18, color: Colors.black),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ResetPassword()));
+                            },
+                            child: const Text(
+                              'Reset',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF450e8b)),
+                            ))
+                      ],
+                    ),
+
                     const SizedBox(
                       height: 40,
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Verifyemail()));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF450e8b),
                         shadowColor: Colors.black,
@@ -190,7 +157,7 @@ class _SignupState extends State<Signup> {
                       ),
                       child: const Center(
                         child: Text(
-                          'Signup',
+                          'Login',
                           style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
                       ),
@@ -204,11 +171,11 @@ class _SignupState extends State<Signup> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignInDemo()),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => const SignInDemo()),
+                        // );
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -227,7 +194,7 @@ class _SignupState extends State<Signup> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text(
-                                  "Signup with Google",
+                                  "Login with Google",
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -266,7 +233,7 @@ class _SignupState extends State<Signup> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                "Signup with Facebook",
+                                "Login with Facebook",
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
@@ -283,13 +250,48 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color(0xFF450e8b), // Purple color
+                          width: 1, // 2px border width
+                        ),
+                        borderRadius: BorderRadius.circular(
+                            80), // Optional: rounded corners
+                      ),
+                      child: const SizedBox(
+                        height: 54,
+                        width: 330,
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Continue as Guest",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xFF450e8b),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 9,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Text(
-                          'Already have an Account?',
+                          "Don't have an account?",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -300,10 +302,10 @@ class _SignupState extends State<Signup> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Login()));
+                                      builder: (context) => const Signup()));
                             },
                             child: const Text(
-                              'LogIn',
+                              'Signup',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xFF450e8b)),
