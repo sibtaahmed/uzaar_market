@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/google_signin.dart';
 import 'package:uzaar_market/login.dart';
 
@@ -29,7 +30,7 @@ class _SignupState extends State<Signup> {
                   children: [
                     Center(
                       child: Image.asset(
-                        'assets/images/Logo.png',
+                        ConstantIconPath.logoPngPath,
                         width: 150,
                         height: 100,
                       ),
@@ -68,9 +69,10 @@ class _SignupState extends State<Signup> {
                             width: 1.0,
                           ),
                         ),
-                        prefixIcon: const Icon(
-                          Icons.person_2_rounded,
-                          color: Colors.grey,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child:
+                              SvgPicture.asset(ConstantIconPath.personSvgPath),
                         ),
                       ),
                     ),
@@ -98,9 +100,11 @@ class _SignupState extends State<Signup> {
                             width: 1.0,
                           ),
                         ),
-                        prefixIcon: const Icon(
-                          Icons.person_2_rounded,
-                          color: Colors.grey,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: SvgPicture.asset(
+                            ConstantIconPath.personSvgPath,
+                          ),
                         ),
                         // suffixIcon: Icon(
                         //   Icons.upload_file_rounded,
@@ -132,9 +136,11 @@ class _SignupState extends State<Signup> {
                             width: 1.0,
                           ),
                         ),
-                        prefixIcon: const Icon(
-                          Icons.mail,
-                          color: Colors.grey,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: SvgPicture.asset(
+                            ConstantIconPath.emailSvgPath,
+                          ),
                         ),
                       ),
                     ),

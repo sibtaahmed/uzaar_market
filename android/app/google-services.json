@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "428701699708",
+    "project_id": "uzaar-a8d72",
+    "storage_bucket": "uzaar-a8d72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428701699708:android:c9a332ea3d487a19f003f9",
+        "android_client_info": {
+          "package_name": "com.example.uzaar_market"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpCyEUBAKZXuhyhOjZxljkO8WtGZHCY1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

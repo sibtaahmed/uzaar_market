@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/board.dart';
 
 class Splash extends StatefulWidget {
@@ -25,6 +26,7 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    double aspectRatio = 40 / 40;
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -41,18 +43,22 @@ class _SplashState extends State<Splash> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/Logo.png'),
+              SvgPicture.asset(
+                'assets/images/Logo.svg',
+                width: 192,
+                height: 340,
+              ),
               const SizedBox(
                 height: 80,
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.089,
-                width: MediaQuery.of(context).size.width * 0.6,
+                height: MediaQuery.of(context).size.height * 0.090,
+                width: MediaQuery.of(context).size.width * 0.520,
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(40.0),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.2),
@@ -63,18 +69,16 @@ class _SplashState extends State<Splash> {
                   ],
                 ),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     const Text(
                       'Get Started',
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
                     ),
-                    const SizedBox(width: 10.0),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -84,8 +88,8 @@ class _SplashState extends State<Splash> {
                         );
                       },
                       child: Container(
-                        width: 40,
-                        height: 40,
+                        width: MediaQuery.of(context).size.height * 0.065,
+                        height: MediaQuery.of(context).size.height * 0.065,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: LinearGradient(

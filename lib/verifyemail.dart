@@ -162,7 +162,7 @@ class _VerifyemailState extends State<Verifyemail> {
                     "Don't Recieve?",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.black),
                   ),
                   TextButton(
@@ -177,6 +177,7 @@ class _VerifyemailState extends State<Verifyemail> {
                         style: TextStyle(
                             decoration: TextDecoration.underline,
                             fontWeight: FontWeight.bold,
+                            fontSize: 14,
                             color: Color(0xFF450e8b)),
                       )),
                 ],
@@ -196,6 +197,7 @@ class _VerifyemailState extends State<Verifyemail> {
                     style: TextStyle(
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.bold,
+                        fontSize: 14,
                         color: Color(0xFF450e8b)),
                   )),
               // const SizedBox(

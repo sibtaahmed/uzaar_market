@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/resetpassword.dart';
 import 'package:uzaar_market/signup.dart';
 import 'package:uzaar_market/verifyemail.dart';
@@ -69,9 +70,11 @@ class _LoginState extends State<Login> {
                             width: 1.0,
                           ),
                         ),
-                        prefixIcon: const Icon(
-                          Icons.mail,
-                          color: Colors.grey,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: SvgPicture.asset(
+                            ConstantIconPath.emailSvgPath,
+                          ),
                         ),
                       ),
                     ),
@@ -116,7 +119,7 @@ class _LoginState extends State<Login> {
                       children: [
                         const Text(
                           'Forget Password?',
-                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          style: TextStyle(fontSize: 14, color: Colors.black),
                         ),
                         TextButton(
                             onPressed: () {
@@ -294,7 +297,7 @@ class _LoginState extends State<Login> {
                           "Don't have an account?",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.black),
                         ),
                         TextButton(
@@ -308,6 +311,7 @@ class _LoginState extends State<Login> {
                               'Signup',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
+                                  fontSize: 14,
                                   color: Color(0xFF450e8b)),
                             ))
                       ],

@@ -15,3 +15,15 @@ class ConstantColor {
   static const Color shadowColor = Color(0x1A000000);
   static const Color overlayColor = Color(0x80000000);
 }
+
+class ConstantIconPath {
+  static String logoSvgPath = "assets/images/Logo.svg";
+  static String logoPngPath = "assets/images/Logo.png";
+  static String personSvgPath = "assets/images/person.svg";
+  static String emailSvgPath = "assets/images/email.svg";
+  static String callSvgPath = "assets/images/call.svg";
+  static String locationSvgPath = "assets/images/location.svg";
+  static String filledlocationSvgPath = "assets/images/location.svg";
+  static String passwordSvgPath = "assets/images/passwordicon.svg";
+  static String filledeyeoffSvgPath = "assets/images/filledeye-off.svg";
+}

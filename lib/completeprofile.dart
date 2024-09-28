@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/constants.dart';
+import 'package:uzaar_market/home.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -105,7 +106,7 @@ class _ProfileState extends State<Profile> {
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: SvgPicture.asset(
-                        "assets/images/person.svg",
+                        ConstantIconPath.personSvgPath,
                       ),
                     ),
                   ),
@@ -248,7 +249,9 @@ class _ProfileState extends State<Profile> {
                 ),
                 const SizedBox(height: 40),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF450e8b),
                     shadowColor: Colors.black,
@@ -281,6 +284,7 @@ class _ProfileState extends State<Profile> {
                           style: TextStyle(
                               decoration: TextDecoration.underline,
                               fontWeight: FontWeight.bold,
+                              fontSize: 14,
                               color: Color(0xFF450e8b)),
                         )),
                   ),
