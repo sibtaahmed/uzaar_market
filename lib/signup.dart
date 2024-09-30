@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/google_signin.dart';
 import 'package:uzaar_market/login.dart';

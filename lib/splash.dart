@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/board.dart';
@@ -26,7 +24,6 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    double aspectRatio = 40 / 40;
     return Scaffold(
       body: Container(
         height: double.infinity,
