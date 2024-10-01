@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uzaar_market/Screens/product_details_screen.dart';
 import 'package:uzaar_market/firebase_options.dart';
+import 'package:uzaar_market/navBar.dart';
 import 'package:uzaar_market/splash.dart';
 
 Future<void> main() async {
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme, // Applying to existing theme
         ),
       ),
-      home: const Splash(),
+      home: ProductDetailScreen(),
     );
   }
 }

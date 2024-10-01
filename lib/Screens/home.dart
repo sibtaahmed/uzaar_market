@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/Screens/product_details_screen.dart';
 import 'package:uzaar_market/constants.dart';
 
 class HomePage extends StatelessWidget {
@@ -186,8 +187,8 @@ class HomePage extends StatelessWidget {
                     hintText: 'Search here',
                     // filled: true,
                     // fillColor: Colors.grey[200],
-                    hintStyle: const TextStyle(
-                      color: ConstantColor.darkgreyColor,
+                    hintStyle: TextStyle(
+                      color: Colors.grey[400],
                       fontSize: 18,
                     ),
                     prefixIcon: IconButton(
@@ -238,8 +239,8 @@ class HomePage extends StatelessWidget {
                                 )
                               : LinearGradient(
                                   colors: [
-                                    Colors.grey[300]!,
-                                    Colors.grey[300]!
+                                    Colors.grey[100]!,
+                                    Colors.grey[100]!
                                   ],
                                 ),
                           borderRadius: BorderRadius.circular(30),
@@ -266,7 +267,7 @@ class HomePage extends StatelessWidget {
               ),
               // Category Icons
               SizedBox(
-                height: 100,
+                height: 105,
                 child: ListView.builder(
                   itemCount: featuredCatogery.length,
                   scrollDirection: Axis.horizontal,
@@ -279,8 +280,8 @@ class HomePage extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(50.0),
                             child: CircleAvatar(
-                              backgroundColor: ConstantColor.lightgreyColor,
-                              radius: 35,
+                              backgroundColor: Colors.grey[100],
+                              radius: 40,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50.0),
                                 child: SvgPicture.asset(
@@ -314,22 +315,31 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: featuredProducts.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 8, bottom: 8),
-                      child: buildProductCard(featuredProducts[index]),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetailScreen(),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8, bottom: 8),
+                        child: buildProductCard(featuredProducts[index]),
+                      ),
                     );
                   },
                 ),
               ),
-
-              // Featured Services
               buildSectionTitle('Featured Services'),
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
-                height: 230,
+                height: 225,
+                width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: featuredServices.length,
+                  itemCount: featuredProducts.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(top: 8, bottom: 8),
@@ -338,81 +348,62 @@ class HomePage extends StatelessWidget {
                   },
                 ),
               ),
-
-              // Featured Housing
               buildSectionTitle('Featured Housing'),
-              SizedBox(
-                height: 220,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: featuredHousing.length,
-                    itemBuilder: (context, index) {
-                      return buildProductCard(featuredHousing[index]);
-                    },
-                  ),
+              Container(
+                decoration: const BoxDecoration(color: Colors.white),
+                height: 225,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: featuredHousing.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 8, bottom: 8),
+                      child: buildHousingCard(featuredHousing[index]),
+                    );
+                  },
                 ),
               ),
+
+              // // Featured Services
+              // buildSectionTitle('Featured Services'),
+              // Container(
+              //   decoration: const BoxDecoration(color: Colors.white),
+              //   height: 230,
+              //   child: ListView.builder(
+              //     scrollDirection: Axis.horizontal,
+              //     itemCount: featuredServices.length,
+              //     itemBuilder: (context, index) {
+              //       return Padding(
+              //         padding: const EdgeInsets.only(top: 8, bottom: 8),
+              //         child: buildServiceCard(featuredServices[index]),
+              //       );
+              //     },
+              //   ),
+              // ),
+
+              // // Featured Housing
+              // buildSectionTitle('Featured Housing'),
+              // SizedBox(
+              //   height: 230,
+              //   width: MediaQuery.of(context).size.width,
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: ListView.builder(
+              //       scrollDirection: Axis.horizontal,
+              //       itemCount: featuredHousing.length,
+              //       itemBuilder: (context, index) {
+              //         return Padding(
+              //           padding: const EdgeInsets.only(top: 8, bottom: 8),
+              //           child: buildProductCard(featuredHousing[index]),
+              //         );
+              //       },
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: Colors.grey,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              color: Colors.grey,
-            ),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add,
-              color: Colors.grey,
-            ),
-            label: 'Add',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications,
-              color: Colors.grey,
-            ),
-            label: 'Notifications',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: Colors.grey,
-            ),
-            label: 'Profile',
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildCategoryIcon(IconData icon, String label) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          CircleAvatar(
-            backgroundColor: Colors.grey[200],
-            child: Icon(icon, color: Colors.black),
-          ),
-          const SizedBox(height: 8),
-          Text(label, style: const TextStyle(fontSize: 12)),
-        ],
       ),
     );
   }
@@ -435,6 +426,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
+//card1
   Widget buildProductCard(Map<String, String> product) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
@@ -486,8 +478,8 @@ class HomePage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Container(
-                        height: 30,
-                        width: 92,
+                        height: 25,
+                        width: 60,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             colors: [
@@ -568,6 +560,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
+//card2
   Widget buildServiceCard(Map<String, String> product) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
@@ -588,15 +581,85 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(16.0)),
-                child: Image.asset(
-                  product['image']!,
-                  fit: BoxFit.cover,
+            // Expanded(
+            //   child: ClipRRect(
+            //     borderRadius:
+            //         const BorderRadius.vertical(top: Radius.circular(16.0)),
+            //     child: Image.asset(
+            //       product['image']!,
+            //       fit: BoxFit.cover,
+            //     ),
+            //   ),
+            // ),
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(16.0)),
+                  child: Image.asset(
+                    product['image']!,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
+                Positioned(
+                  bottom: 10,
+                  right: 10,
+                  child: Row(
+                    children: [
+                      SvgPicture.asset('assets/images/Star.svg',
+                          width: 10, height: 15),
+                      const SizedBox(width: 4),
+                      const Text(
+                        '4.5',
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  top: 10,
+                  left: 10,
+                  child: SvgPicture.asset('assets/images/verify.svg',
+                      width: 24, height: 24),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: SvgPicture.asset('assets/images/3dots.svg',
+                      width: 24, height: 24),
+                ),
+                Positioned(
+                  bottom: 10,
+                  left: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Container(
+                      height: 25,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [
+                            ConstantColor.primaryColor,
+                            ConstantColor.orangeColor
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Product',
+                          style: TextStyle(fontSize: 12, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -664,68 +727,135 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Widget buildServiceCard(Map<String, String> service) {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(right: 16.0),
-  //     child: Container(
-  //       width: 150,
-  //       decoration: BoxDecoration(
-  //         borderRadius: BorderRadius.circular(16.0),
-  //         color: Colors.white,
-  //         boxShadow: [
-  //           BoxShadow(
-  //             color: Colors.grey.withOpacity(0.2),
-  //             spreadRadius: 2,
-  //             blurRadius: 5,
-  //             offset: const Offset(0, 3),
-  //           ),
-  //         ],
-  //       ),
-  //       child: Column(
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //         children: [
-  //           Expanded(
-  //             child: ClipRRect(
-  //               borderRadius:
-  //                   const BorderRadius.vertical(top: Radius.circular(16.0)),
-  //               child: Image.asset(
-  //                 service['image']!,
-  //                 fit: BoxFit.cover,
-  //               ),
-  //             ),
-  //           ),
-  //           Padding(
-  //             padding: const EdgeInsets.all(8.0),
-  //             child: Column(
-  //               crossAxisAlignment: CrossAxisAlignment.start,
-  //               children: [
-  //                 Text(service['title']!,
-  //                     style: const TextStyle(
-  //                         fontWeight: FontWeight.bold, fontSize: 14)),
-  //                 const SizedBox(height: 4),
-  //                 Text(service['location']!,
-  //                     style: const TextStyle(color: Colors.grey, fontSize: 12)),
-  //               ],
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  Widget buildCategoryImage(Image image, String label) {
+  Widget buildHousingCard(Map<String, String> service) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          CircleAvatar(
-            backgroundColor: Colors.grey[200],
-            child: image,
+      padding: const EdgeInsets.only(right: 16.0),
+      child: Container(
+        width: 150,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.0),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Adding the '3dots.svg' icon at the start
+
+              Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(16.0)),
+                    child: Image.asset(
+                      service['image']!,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    top: 10,
+                    left: 10,
+                    child: SvgPicture.asset('assets/images/verify.svg',
+                        width: 24, height: 24),
+                  ),
+                  Positioned(
+                    top: 10,
+                    right: 10,
+                    child: SvgPicture.asset('assets/images/3dots.svg',
+                        width: 24, height: 24),
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    left: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Container(
+                        height: 25,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              ConstantColor.primaryColor,
+                              ConstantColor.orangeColor
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'Product',
+                            style: TextStyle(fontSize: 12, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(service['title']!,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15)),
+                    const SizedBox(height: 2),
+                    const Text('New',
+                        style: TextStyle(
+                            color: ConstantColor.primaryColor, fontSize: 14)),
+                    const SizedBox(height: 2),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/location.svg",
+                              width: 15,
+                              height: 15,
+                            ),
+                            const SizedBox(width: 2),
+                            Text(service['location']!,
+                                style: const TextStyle(
+                                    color: Colors.grey, fontSize: 12)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/tag.svg",
+                              width: 20,
+                              height: 20,
+                            ),
+                            const SizedBox(width: 2),
+                            Text(service['price']!,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                    color: ConstantColor.primaryColor)),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 8),
-          Text(label, style: const TextStyle(fontSize: 12)),
-        ],
+        ),
       ),
     );
   }
