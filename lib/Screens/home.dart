@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/Screens/product_details_screen.dart';
 import 'package:uzaar_market/constants.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<String> categories = [
     'Products',
     'Services',
@@ -73,6 +79,7 @@ class HomePage extends StatelessWidget {
     },
     // Add more services here
   ];
+
   final List<Map<String, String>> featuredCatogery = [
     {
       'title': 'Electronics',
@@ -108,6 +115,7 @@ class HomePage extends StatelessWidget {
     },
     // Add more services here
   ];
+
   final List<Map<String, String>> featuredHousing = [
     {
       'title': '2 Bedroom house',
@@ -135,6 +143,14 @@ class HomePage extends StatelessWidget {
     },
     // Add more services here
   ];
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -523,7 +539,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             SvgPicture.asset(
                               "assets/images/location.svg",
-                              width: 15,
+                              width: 38,
                               height: 15,
                             ),
                             const SizedBox(width: 2),

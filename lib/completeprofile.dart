@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/Screens/home.dart';
 import 'package:uzaar_market/mainScreen.dart';
+import 'package:uzaar_market/navBar.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -251,7 +252,11 @@ class _ProfileState extends State<Profile> {
                 const SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Navbar(),
+                        ));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF450e8b),

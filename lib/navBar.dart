@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uzaar_market/Screens/add_product_screen.dart';
 import 'package:uzaar_market/Screens/home.dart';
@@ -22,16 +23,25 @@ class _NavbarState extends State<Navbar> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+    ));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: [
+        children: const [
           HomePage(),
-          const SearchProductScreen(),
-          const AddProductScreen(),
-          const ListProductScreen(),
-          const ProfileScreen(),
+          SearchProductScreen(),
+          AddProductScreen(),
+          ListProductScreen(),
+          ProfileScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

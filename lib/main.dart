@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uzaar_market/Screens/product_details_screen.dart';
 import 'package:uzaar_market/firebase_options.dart';
@@ -19,6 +20,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+    ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -30,7 +35,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme, // Applying to existing theme
         ),
       ),
-      home: ProductDetailScreen(),
+      home: const Splash(),
     );
   }
 }
