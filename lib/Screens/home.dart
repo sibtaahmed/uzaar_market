@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
       'category': 'Fashion',
       'location': 'Los Angeles',
       'price': '\$12',
+
       'image': 'assets/images/shirt.png' // Replace with your image asset
     },
     {
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     },
     {
       'title': 'Notebook',
-      'category': 'Electronics',
+      'category': 'Stationery',
       'location': 'Los Angeles',
       'price': '\$12',
       'image': 'assets/images/notebook.png' // Replace with your image asset
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, String>> featuredServices = [
     {
       'title': 'Graphic Design',
+      'category': 'Designing',
       'location': 'Los Angeles',
       'price': '\$12',
       'image':
@@ -59,6 +61,8 @@ class _HomePageState extends State<HomePage> {
     },
     {
       'title': 'Web Development',
+      'category': 'Tech',
+
       'location': 'Los Angeles',
       'price': '\$120',
       'image':
@@ -66,12 +70,16 @@ class _HomePageState extends State<HomePage> {
     },
     {
       'title': 'Makeup & SPA',
+      'category': 'Beauty',
+
       'location': 'Los Angeles',
       'price': '\$12',
       'image': 'assets/images/makeup.png' // Replace with your image asset
     },
     {
       'title': 'Graphic Design',
+      'category': 'Designing',
+
       'location': 'Los Angeles',
       'price': '\$12',
       'image':
@@ -120,24 +128,29 @@ class _HomePageState extends State<HomePage> {
     {
       'title': '2 Bedroom house',
       'location': 'Los Angeles',
+      'category': 'Rental',
       'price': '\$12',
       'image': 'assets/images/Bedroomhouse.png' // Replace with your image asset
     },
     {
       'title': '2 Bedroom house',
       'location': 'Los Angeles',
+      'category': 'For Sale',
       'price': '\$120',
       'image': 'assets/images/bedroom2.png' // Replace with your image asset
     },
     {
       'title': '2 Bedroom house',
       'location': 'Los Angeles',
+      'category': 'For Sale',
+
       'price': '\$120',
       'image': 'assets/images/bedroom2.png' // Replace with your image asset
     },
     {
       'title': '2 Bedroom house',
       'location': 'Los Angeles',
+      'category': 'Lease',
       'price': '\$12',
       'image': 'assets/images/bedroom4.png' // Replace with your image asset
     },
@@ -355,7 +368,7 @@ class _HomePageState extends State<HomePage> {
                 width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: featuredProducts.length,
+                  itemCount: featuredServices.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(top: 8, bottom: 8),
@@ -367,7 +380,7 @@ class _HomePageState extends State<HomePage> {
               buildSectionTitle('Featured Housing'),
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
-                height: 225,
+                height: 235,
                 width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -494,8 +507,8 @@ class _HomePageState extends State<HomePage> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Container(
-                        height: 25,
-                        width: 60,
+                        height: 20,
+                        width: 80,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             colors: [
@@ -507,10 +520,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            'Product',
-                            style: TextStyle(fontSize: 12, color: Colors.white),
+                            product['category']!,
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.white),
                           ),
                         ),
                       ),
@@ -653,8 +667,8 @@ class _HomePageState extends State<HomePage> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Container(
-                      height: 25,
-                      width: 60,
+                      height: 20,
+                      width: 80,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           colors: [
@@ -666,10 +680,11 @@ class _HomePageState extends State<HomePage> {
                         ),
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          'Product',
-                          style: TextStyle(fontSize: 12, color: Colors.white),
+                          product['category']!,
+                          style: const TextStyle(
+                              fontSize: 12, color: Colors.white),
                         ),
                       ),
                     ),
@@ -743,11 +758,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+//card3
   Widget buildHousingCard(Map<String, String> service) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: Container(
-        width: 150,
+        width: 158,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: Colors.white,
@@ -794,8 +810,8 @@ class _HomePageState extends State<HomePage> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Container(
-                        height: 25,
-                        width: 60,
+                        height: 20,
+                        width: 80,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             colors: [
@@ -807,10 +823,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            'Product',
-                            style: TextStyle(fontSize: 12, color: Colors.white),
+                            service['category']!,
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.white),
                           ),
                         ),
                       ),
@@ -827,10 +844,6 @@ class _HomePageState extends State<HomePage> {
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15)),
                     const SizedBox(height: 2),
-                    const Text('New',
-                        style: TextStyle(
-                            color: ConstantColor.primaryColor, fontSize: 14)),
-                    const SizedBox(height: 2),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -842,7 +855,7 @@ class _HomePageState extends State<HomePage> {
                               width: 15,
                               height: 15,
                             ),
-                            const SizedBox(width: 2),
+                            const SizedBox(width: 4),
                             Text(service['location']!,
                                 style: const TextStyle(
                                     color: Colors.grey, fontSize: 12)),
@@ -856,19 +869,93 @@ class _HomePageState extends State<HomePage> {
                               width: 20,
                               height: 20,
                             ),
-                            const SizedBox(width: 2),
+                            const SizedBox(width: 3),
                             Text(service['price']!,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 14,
                                     color: ConstantColor.primaryColor)),
                           ],
-                        )
+                        ),
+                        // const SizedBox(height: 2),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    const Text(
+                      'Furnished',
+                      style: TextStyle(
+                          fontSize: 10,
+                          color: ConstantColor.primaryColor,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/area.svg",
+                              width: 14,
+                              height: 14,
+                            ),
+                            const SizedBox(width: 2),
+                            const Text(
+                              '4500 sq.ft',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/bath.svg",
+                              width: 14,
+                              height: 14,
+                            ),
+                            const SizedBox(width: 2),
+                            const Text(
+                              '2',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/bed.svg",
+                              width: 14,
+                              height: 14,
+                            ),
+                            const SizedBox(width: 2),
+                            const Text(
+                              '2',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     )
                   ],
                 ),
               ),
+              // const SizedBox(height: 10),
+              // const Divider(
+              //   color: Colors.grey,
+              // ),
             ],
           ),
         ),

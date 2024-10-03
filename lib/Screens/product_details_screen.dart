@@ -23,7 +23,14 @@ class ProductDetailScreen extends StatelessWidget {
       'category': 'Stationery',
       'location': 'Los Angeles',
       'price': '\$5',
-      'image': 'assets/images/books.png',
+      'image': 'assets/images/notebook.png',
+    },
+    {
+      'title': 'Iphone 14',
+      'category': 'Electronics',
+      'location': 'Los Angeles',
+      'price': '\$120',
+      'image': 'assets/images/phone.png',
     },
   ];
 
@@ -145,7 +152,7 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                   ),
                   // const
-                  const SizedBox(height: 16),
+                  // const SizedBox(height: 16),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Column(
@@ -165,7 +172,7 @@ class ProductDetailScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  // const SizedBox(height: 30),
                   Container(
                     height: 52,
                     width: 390,
@@ -179,21 +186,33 @@ class ProductDetailScreen extends StatelessWidget {
                             children: [
                               SvgPicture.asset('assets/images/chat.svg'),
                               const SizedBox(width: 15),
-                              const Text('Start Chat'),
+                              const Text(
+                                'Start Chat',
+                                style: TextStyle(
+                                    color: ConstantColor.primaryColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ],
                           ),
                           Row(
                             children: [
                               SvgPicture.asset('assets/images/offer.svg'),
                               const SizedBox(width: 15),
-                              const Text('Send Offer'),
+                              const Text(
+                                'Send Offer',
+                                style: TextStyle(
+                                    color: ConstantColor.primaryColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ],
                           ),
                         ],
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 8),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -371,112 +390,54 @@ class ProductDetailScreen extends StatelessWidget {
                         //     ),
                         //   ],
                         // ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          'More by This Seller',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        const SizedBox(height: 8),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: moreBySeller.map((product) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16.0),
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
-                                        spreadRadius: 2,
-                                        blurRadius: 5,
-                                        offset: const Offset(0, 3),
-                                      ),
-                                    ],
-                                  ),
-                                  margin: const EdgeInsets.only(right: 8),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                        child: Image.asset(
-                                          product['image']!,
-                                          fit: BoxFit.cover,
-                                          width: 150,
-                                          height: 100,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 4),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          gradient: const LinearGradient(
-                                            colors: [
-                                              Colors.deepPurple,
-                                              Colors.orange,
-                                            ],
-                                            begin: Alignment.topLeft,
-                                            end: Alignment.bottomRight,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Text(
-                                          product['category']!,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        product['title']!,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14),
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Icon(Icons.location_on,
-                                              color: Colors.grey, size: 12),
-                                          const SizedBox(width: 4),
-                                          Text(product['location']!,
-                                              style: const TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 12)),
-                                        ],
-                                      ),
-                                      Text(
-                                        product['price']!,
-                                        style: const TextStyle(
-                                          color: Colors.deepPurple,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        ),
+                        // const SizedBox(height: 16),
 
+                        // const SizedBox(height: 8),
+
+                        // my changes
+
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // const SizedBox(height: 8),
+                              _buildSectionTitle('More by This Seller'),
+                              Container(
+                                decoration:
+                                    const BoxDecoration(color: Colors.white),
+                                height: 225,
+                                width: MediaQuery.of(context).size.width,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: moreBySeller.length,
+                                  itemBuilder: (context, index) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ProductDetailScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, bottom: 8),
+                                        child: buildProductCard(
+                                            moreBySeller[index]),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ]),
                         Padding(
-                          padding: const EdgeInsets.all(25.0),
+                          padding: const EdgeInsets.all(20.0),
                           child: Container(
-                            height: 48,
+                            height: 54,
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50.0),
+                              borderRadius: BorderRadius.circular(30.0),
                               color: ConstantColor.primaryColor,
                             ),
                             child: const Center(
@@ -499,6 +460,154 @@ class ProductDetailScreen extends StatelessWidget {
                   )
                 ])
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title,
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        ],
+      ),
+    );
+  }
+
+  Widget buildProductCard(Map<String, String> product) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 16.0),
+      child: Container(
+        width: 150,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.0),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Adding the '3dots.svg' icon at the start
+
+              Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(16.0)),
+                    child: Image.asset(
+                      product['image']!,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    top: 10,
+                    left: 10,
+                    child: SvgPicture.asset('assets/images/verify.svg',
+                        width: 24, height: 24),
+                  ),
+                  Positioned(
+                    top: 10,
+                    right: 10,
+                    child: SvgPicture.asset('assets/images/3dots.svg',
+                        width: 24, height: 24),
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    left: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Container(
+                        height: 20,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              ConstantColor.primaryColor,
+                              ConstantColor.orangeColor
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Center(
+                          child: Text(
+                            product['category']!,
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(product['title']!,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15)),
+                    const SizedBox(height: 2),
+                    const Text('New',
+                        style: TextStyle(
+                            color: ConstantColor.primaryColor, fontSize: 14)),
+                    const SizedBox(height: 2),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/location.svg",
+                              width: 38,
+                              height: 15,
+                            ),
+                            const SizedBox(width: 2),
+                            Text(product['location']!,
+                                style: const TextStyle(
+                                    color: Colors.grey, fontSize: 12)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/tag.svg",
+                              width: 20,
+                              height: 20,
+                            ),
+                            const SizedBox(width: 2),
+                            Text(product['price']!,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                    color: ConstantColor.primaryColor)),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
