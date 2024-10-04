@@ -274,3 +274,81 @@ class ProductDetailScreen extends StatelessWidget {
       ),
     );
   }}
+
+// import 'package:flutter/material.dart';
+
+// class FilterChipsList extends StatefulWidget {
+//   const FilterChipsList({super.key});
+
+//   @override
+//   State<FilterChipsList> createState() => _FilterChipsListState();
+// }
+
+// class _FilterChipsListState extends State<FilterChipsList> {
+//   final List<String> filters = ['Category', 'New', 'Price', 'Location'];
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 50,
+//       child: ListView.builder(
+//         scrollDirection: Axis.horizontal,
+//         itemCount: filters.length,
+//         itemBuilder: (context, index) {
+//           return Padding(
+//             padding: const EdgeInsets.symmetric(horizontal: 8.0),
+//             child: FilterChipWidget(label: filters[index]),
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
+
+// class FilterChipWidget extends StatefulWidget {
+//   final String label;
+
+//   const FilterChipWidget({super.key, required this.label});
+
+//   @override
+//   State<FilterChipWidget> createState() => _FilterChipWidgetState();
+// }
+
+// class _FilterChipWidgetState extends State<FilterChipWidget> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: ChoiceChip(
+//         label: Row(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             const Icon(
+//               Icons.check_circle,
+//               color: Colors.white,
+//               size: 16,
+//             ),
+//             const SizedBox(width: 4),
+//             Text(
+//               widget.label,
+//               style: const TextStyle(
+//                 color: Colors.white,
+//               ),
+//             ),
+//           ],
+//         ),
+//         selected: true,
+//         backgroundColor: Colors.white,
+//         selectedColor: Colors.purple,
+//         shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(25),
+//           side: const BorderSide(
+//             color: Colors.purple,
+//           ),
+//         ),
+//         // onSelected: (value) {
+//         //   // You can add functionality here when chip is selected
+//         // },
+//       ),
+//     );
+//   }
+// }
