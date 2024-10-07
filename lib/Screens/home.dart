@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/Screens/product_details_screen.dart';
 import 'package:uzaar_market/constants.dart';
+import 'package:uzaar_market/service_detail_Screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -123,6 +124,38 @@ class _HomePageState extends State<HomePage> {
     },
     // Add more services here
   ];
+  final List<Map<String, String>> servicesCatogery = [
+    {
+      'title': 'Tech',
+      'image': 'assets/images/tech.png' // Replace with your image asset
+    },
+    {
+      'title': 'Designing',
+      'image': 'assets/images/barber.png' // Replace with your image asset
+    },
+    {
+      'title': 'Medical',
+      'image': 'assets/images/health.png' // Replace with your image asset
+    },
+
+    // Add more services here
+  ];
+  final List<Map<String, String>> housingCatogery = [
+    {
+      'title': 'Rental',
+      'image': 'assets/images/rental.png' // Replace with your image asset
+    },
+    {
+      'title': 'ForSale',
+      'image': 'assets/images/forsale.png' // Replace with your image asset
+    },
+    {
+      'title': 'Lease',
+      'image': 'assets/images/lease.png' // Replace with your image asset
+    },
+
+    // Add more services here
+  ];
 
   final List<Map<String, String>> featuredHousing = [
     {
@@ -165,6 +198,7 @@ class _HomePageState extends State<HomePage> {
     ));
   }
 
+  int selectedTabIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -257,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          gradient: index == 0
+                          gradient: index == selectedTabIndex
                               ? const LinearGradient(
                                   colors: [
                                     ConstantColor.primaryColor,
@@ -275,12 +309,17 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              selectedTabIndex =
+                                  index; // Update the selected tab index
+                            });
+                          },
                           style: ElevatedButton.styleFrom(
                             shape: const StadiumBorder(),
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
-                            foregroundColor: index == 0
+                            foregroundColor: index == selectedTabIndex
                                 ? Colors.white
                                 : ConstantColor.darkgreyColor,
                           ),
@@ -295,44 +334,127 @@ class _HomePageState extends State<HomePage> {
                 height: 29,
               ),
               // Category Icons
-              SizedBox(
-                height: 105,
-                child: ListView.builder(
-                  itemCount: featuredCatogery.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    final category = featuredCatogery[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(50.0),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.grey[100],
-                              radius: 40,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(50.0),
-                                child: SvgPicture.asset(
-                                  category['image']!,
-                                  fit: BoxFit.fill,
-                                  height: 50,
-                                  width: 50,
+              selectedTabIndex == 0
+                  ? SizedBox(
+                      height: 105,
+                      child: ListView.builder(
+                        itemCount: featuredCatogery.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          final category = featuredCatogery[index];
+                          return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.grey[100],
+                                    radius: 40,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      child: SvgPicture.asset(
+                                        category['image']!,
+                                        fit: BoxFit.fill,
+                                        height: 50,
+                                        width: 50,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  category['title']!,
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                              ],
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            category['title']!,
-                            style: const TextStyle(fontSize: 12),
-                          ),
-                        ],
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
-              ),
+                    )
+                  : selectedTabIndex == 1
+                      ? SizedBox(
+                          height: 105,
+                          child: ListView.builder(
+                            itemCount: servicesCatogery.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              final category = servicesCatogery[index];
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Column(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.grey[100],
+                                        radius: 40,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
+                                          child: Image.asset(
+                                            category['image']!,
+                                            fit: BoxFit.fill,
+                                            height: 50,
+                                            width: 50,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      category['title']!,
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                      : SizedBox(
+                          height: 105,
+                          child: ListView.builder(
+                            itemCount: housingCatogery.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              final category = housingCatogery[index];
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Column(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.grey[100],
+                                        radius: 40,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(50.0),
+                                          child: Image.asset(
+                                            category['image']!,
+                                            fit: BoxFit.fill,
+                                            height: 50,
+                                            width: 50,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      category['title']!,
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
 
               // Featured Products
               buildSectionTitle('Featured Products'),
@@ -370,9 +492,19 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: featuredServices.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 8, bottom: 8),
-                      child: buildServiceCard(featuredServices[index]),
+                                       return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ServiceDetailScreen(),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8, bottom: 8),
+                        child: buildServiceCard(featuredServices[index]),
+                      ),
                     );
                   },
                 ),
@@ -380,7 +512,7 @@ class _HomePageState extends State<HomePage> {
               buildSectionTitle('Featured Housing'),
               Container(
                 decoration: const BoxDecoration(color: Colors.white),
-                height: 235,
+                height: 240,
                 width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -623,9 +755,8 @@ class _HomePageState extends State<HomePage> {
             // ),
             Stack(
               children: [
-                ClipRRect(
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(16.0)),
+                SizedBox(
+                  width: double.infinity,
                   child: Image.asset(
                     product['image']!,
                     fit: BoxFit.cover,
@@ -784,9 +915,8 @@ class _HomePageState extends State<HomePage> {
 
               Stack(
                 children: [
-                  ClipRRect(
-                    borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(16.0)),
+                  SizedBox(
+                    width: double.infinity,
                     child: Image.asset(
                       service['image']!,
                       fit: BoxFit.cover,

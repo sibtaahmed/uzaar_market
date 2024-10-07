@@ -132,7 +132,8 @@ class _ServicesCatagoryState extends State<ServicesCatagory> {
             ),
             // Product Grid
             const SizedBox(height: 16),
-            SizedBox(
+            Container(
+              color: Colors.white,
               height: 500, // Set a fixed height for the GridView
               child: GridView.builder(
                 physics:
@@ -142,7 +143,7 @@ class _ServicesCatagoryState extends State<ServicesCatagory> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 16.0,
                   mainAxisSpacing: 16.0,
-                  childAspectRatio: 0.75,
+                  childAspectRatio: 0.79,
                 ),
                 itemBuilder: (context, index) {
                   return ServicesCard(services: services[index]);

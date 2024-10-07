@@ -29,7 +29,9 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        forceMaterialTransparency: true,
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset('assets/images/menu.svg'),
@@ -53,6 +55,7 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Category Tabs
@@ -76,10 +79,7 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
                                 end: Alignment.bottomCenter,
                               )
                             : LinearGradient(
-                                colors: [
-                                  Colors.grey[300]!,
-                                  Colors.grey[300]!
-                                ],
+                                colors: [Colors.grey[300]!, Colors.grey[300]!],
                               ),
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -105,7 +105,7 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
                 },
               ),
             ),
-      
+
             Expanded(
               child:
                   getScreenForSelectedTab(), // Display screen based on selected tab
@@ -129,4 +129,3 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
     }
   }
 }
-

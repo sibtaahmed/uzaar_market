@@ -45,6 +45,7 @@ class _NavbarState extends State<Navbar> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,

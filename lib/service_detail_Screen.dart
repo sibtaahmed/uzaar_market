@@ -2,39 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uzaar_market/constants.dart';
 
-class ProductDetailScreen extends StatelessWidget {
-  final List<Map<String, String>> moreBySeller = [
+class ServiceDetailScreen extends StatelessWidget {
+  final List<Map<String, String>> featuredServices = [
     {
-      'title': 'White Men Shirt',
-      'category': 'Fashion',
+      'title': 'Graphic Design',
+      'category': 'Designing',
       'location': 'Los Angeles',
       'price': '\$12',
-      'image': 'assets/images/shirt.png',
+      'image':
+          'assets/images/graphic_design.png' // Replace with your image asset
     },
     {
-      'title': 'Iphone 14',
-      'category': 'Electronics',
+      'title': 'Web Development',
+      'category': 'Tech',
+
       'location': 'Los Angeles',
       'price': '\$120',
-      'image': 'assets/images/phone.png',
+      'image':
+          'assets/images/web_development.png' // Replace with your image asset
     },
     {
-      'title': 'Note Book',
-      'category': 'Stationery',
+      'title': 'Makeup & SPA',
+      'category': 'Beauty',
+
       'location': 'Los Angeles',
-      'price': '\$5',
-      'image': 'assets/images/notebook.png',
+      'price': '\$12',
+      'image': 'assets/images/makeup.png' // Replace with your image asset
     },
     {
-      'title': 'Iphone 14',
-      'category': 'Electronics',
+      'title': 'Graphic Design',
+      'category': 'Designing',
+
       'location': 'Los Angeles',
-      'price': '\$120',
-      'image': 'assets/images/phone.png',
+      'price': '\$12',
+      'image':
+          'assets/images/graphic_gallery.png' // Replace with your image asset
     },
+    // Add more services here
   ];
 
-  ProductDetailScreen({super.key});
+  ServiceDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +50,8 @@ class ProductDetailScreen extends StatelessWidget {
       appBar: AppBar(
         forceMaterialTransparency: true,
         title: const Text(
-          'Product Detail',
-          style: TextStyle(
-              color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
+          'Service Detail',
+          style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -58,7 +64,7 @@ class ProductDetailScreen extends StatelessWidget {
             Stack(
               children: [
                 Image.asset(
-                  "assets/images/iphone2.jpg",
+                  "assets/images/graphic_design_SD.png",
                 ),
                 Positioned(
                   bottom: 10,
@@ -78,7 +84,7 @@ class ProductDetailScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: const Text(
-                      'Electronics',
+                      'Designing',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -98,7 +104,7 @@ class ProductDetailScreen extends StatelessWidget {
                           children: [
                             const SizedBox(height: 10),
                             const Text(
-                              'Iphone 14',
+                              'Graphic Design',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
@@ -138,7 +144,7 @@ class ProductDetailScreen extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 4),
                                   const Text(
-                                    '\$120',
+                                    '\$12',
                                     style: TextStyle(
                                       color: Colors.deepPurple,
                                       fontSize: 20,
@@ -179,12 +185,11 @@ class ProductDetailScreen extends StatelessWidget {
                     height: 52,
                     width: 390,
                     color: const Color(0xFFF7F8F8),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Row(
                             children: [
                               SvgPicture.asset('assets/images/chat.svg'),
                               const SizedBox(width: 15),
@@ -197,21 +202,8 @@ class ProductDetailScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              SvgPicture.asset('assets/images/offer.svg'),
-                              const SizedBox(width: 15),
-                              const Text(
-                                'Send Offer',
-                                style: TextStyle(
-                                    color: ConstantColor.primaryColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -356,6 +348,19 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'Location',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 10),
+                        Image.asset(
+                          "assets/images/mapp.png",
+                        ),
+
                         // const Row(
                         //   children: [
                         //     CircleAvatar(
@@ -410,7 +415,7 @@ class ProductDetailScreen extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width,
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: moreBySeller.length,
+                                  itemCount: featuredServices.length,
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
                                       onTap: () {
@@ -418,7 +423,7 @@ class ProductDetailScreen extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                ProductDetailScreen(),
+                                                ServiceDetailScreen(),
                                           ),
                                         );
                                       },
@@ -426,7 +431,7 @@ class ProductDetailScreen extends StatelessWidget {
                                         padding: const EdgeInsets.only(
                                             top: 8, bottom: 8),
                                         child: buildProductCard(
-                                            moreBySeller[index]),
+                                            featuredServices[index]),
                                       ),
                                     );
                                   },

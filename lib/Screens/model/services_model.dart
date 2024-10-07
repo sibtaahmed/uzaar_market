@@ -14,43 +14,32 @@ class ServicesCard extends StatefulWidget {
 class _ServicesCardState extends State<ServicesCard> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 16),
-      child: Container(
-        width: 160,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.0),
-          color: Colors.red,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Expanded(
-            //   child: ClipRRect(
-            //     borderRadius:
-            //         const BorderRadius.vertical(top: Radius.circular(16.0)),
-            //     child: Image.asset(
-            //       product['image']!,
-            //       fit: BoxFit.cover,
-            //     ),
-            //   ),
-            // ),
             Stack(
               children: [
-                ClipRRect(
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(16.0)),
+                SizedBox(
+                  width: double.infinity,
                   child: Image.asset(
                     widget.services.imageUrl,
-                    fit: BoxFit.fill,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Positioned(
@@ -84,30 +73,29 @@ class _ServicesCardState extends State<ServicesCard> {
                       width: 24, height: 24),
                 ),
                 Positioned(
-                  bottom: 10,
-                  left: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Container(
-                      height: 20,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            ConstantColor.primaryColor,
-                            ConstantColor.orangeColor
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        borderRadius: BorderRadius.circular(30),
+                  bottom: 8,
+                  left: 8,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [
+                          ConstantColor.primaryColor,
+                          ConstantColor.orangeColor
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
                       ),
-                      child: Center(
-                        child: Text(
-                          widget.services.category,
-                          style: const TextStyle(
-                              fontSize: 12, color: Colors.white),
-                        ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Text(
+                        widget.services.category,
+                        style:
+                            const TextStyle(fontSize: 12, color: Colors.white),
                       ),
                     ),
                   ),
@@ -116,9 +104,9 @@ class _ServicesCardState extends State<ServicesCard> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                top: 8.0,
-                left: 8,
-                right: 8,
+                left: 10,
+                right: 10,
+                bottom: 10,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

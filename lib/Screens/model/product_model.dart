@@ -75,26 +75,26 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                   ),
                 ),
-                if (widget.product.isNew)
-                  Positioned(
-                    bottom: 10,
-                    left: 2,
-                    child: Container(
-                        // padding: const EdgeInsets.all(4),
-                        // decoration: const BoxDecoration(
-                        //   color: Colors.green,
-                        //   shape: BoxShape.circle,
-                        // ),
-                        // child: const Text(
-                        //   'New',
-                        //   style: TextStyle(
-                        //     color: Colors.white,
-                        //     fontWeight: FontWeight.bold,
-                        //     fontSize: 10,
-                        //   ),
-                        // ),
-                        ),
-                  ),
+                // if (widget.product.isNew)
+                //   Positioned(
+                //     bottom: 10,
+                //     left: 2,
+                //     child: Container(
+                //         // padding: const EdgeInsets.all(4),
+                //         // decoration: const BoxDecoration(
+                //         //   color: Colors.green,
+                //         //   shape: BoxShape.circle,
+                //         // ),
+                //         // child: const Text(
+                //         //   'New',
+                //         //   style: TextStyle(
+                //         //     color: Colors.white,
+                //         //     fontWeight: FontWeight.bold,
+                //         //     fontSize: 10,
+                //         //   ),
+                //         // ),
+                //         ),
+                //   ),
                 Positioned(
                   top: 10,
                   right: 10,
