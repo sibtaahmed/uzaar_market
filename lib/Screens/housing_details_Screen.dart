@@ -2,46 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uzaar_market/constants.dart';
 
-class ServiceDetailScreen extends StatelessWidget {
-  final List<Map<String, String>> featuredServices = [
+class HousingDetailScreen extends StatelessWidget {
+  final List<Map<String, String>> featuredHousing = [
     {
-      'title': 'Graphic Design',
-      'category': 'Designing',
+      'title': '2 Bedroom house',
       'location': 'Los Angeles',
+      'category': 'Rental',
       'price': '\$12',
-      'image':
-          'assets/images/graphic_design.png' // Replace with your image asset
+      'image': 'assets/images/Bedroomhouse.png' // Replace with your image asset
     },
     {
-      'title': 'Web Development',
-      'category': 'Tech',
-
+      'title': '2 Bedroom house',
       'location': 'Los Angeles',
+      'category': 'For Sale',
       'price': '\$120',
-      'image':
-          'assets/images/web_development.png' // Replace with your image asset
+      'image': 'assets/images/bedroom2.png' // Replace with your image asset
     },
     {
-      'title': 'Makeup & SPA',
-      'category': 'Beauty',
-
+      'title': '2 Bedroom house',
       'location': 'Los Angeles',
-      'price': '\$12',
-      'image': 'assets/images/makeup.png' // Replace with your image asset
+      'category': 'For Sale',
+
+      'price': '\$120',
+      'image': 'assets/images/bedroom2.png' // Replace with your image asset
     },
     {
-      'title': 'Graphic Design',
-      'category': 'Designing',
-
+      'title': '2 Bedroom house',
       'location': 'Los Angeles',
+      'category': 'Lease',
       'price': '\$12',
-      'image':
-          'assets/images/graphic_gallery.png' // Replace with your image asset
+      'image': 'assets/images/bedroom4.png' // Replace with your image asset
     },
     // Add more services here
   ];
-
-  ServiceDetailScreen({super.key});
+  HousingDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +44,7 @@ class ServiceDetailScreen extends StatelessWidget {
       appBar: AppBar(
         forceMaterialTransparency: true,
         title: const Text(
-          'Service Detail',
+          'Housing Detail',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -64,7 +58,7 @@ class ServiceDetailScreen extends StatelessWidget {
             Stack(
               children: [
                 Image.asset(
-                  "assets/images/graphic_design_SD.png",
+                  "assets/images/bedroom_HD.png",
                 ),
                 Positioned(
                   bottom: 10,
@@ -84,7 +78,7 @@ class ServiceDetailScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: const Text(
-                      'Designing',
+                      'Rental',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -105,30 +99,86 @@ class ServiceDetailScreen extends StatelessWidget {
                           children: [
                             const SizedBox(height: 10),
                             const Text(
-                              'Graphic Design',
+                              '2 Bedroom house',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
                             const SizedBox(height: 4),
                             Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(
-                                        "assets/images/location.svg",
-                                        width: 9,
-                                        height: 13,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/images/location.svg",
+                                  width: 9,
+                                  height: 13,
+                                ),
+                                const SizedBox(width: 4),
+                                const Text(
+                                  'Los Angeles',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            Row(
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/images/area.svg",
+                                      width: 14,
+                                      height: 14,
+                                    ),
+                                    const SizedBox(width: 2),
+                                    const Text(
+                                      '4500 sq.ft',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
                                       ),
-                                      const SizedBox(width: 4),
-                                      const Text(
-                                        'Los Angeles',
-                                        style: TextStyle(fontSize: 12),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(width: 10),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/images/bath.svg",
+                                      width: 14,
+                                      height: 14,
+                                    ),
+                                    const SizedBox(width: 2),
+                                    const Text(
+                                      '2',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
                                       ),
-                                    ],
-                                  ),
-                                ]),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(width: 10),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/images/bed.svg",
+                                      width: 14,
+                                      height: 14,
+                                    ),
+                                    const SizedBox(width: 2),
+                                    const Text(
+                                      '2',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
                           ],
                         ),
                         Row(
@@ -145,7 +195,7 @@ class ServiceDetailScreen extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 4),
                                   const Text(
-                                    '\$12',
+                                    '\$120',
                                     style: TextStyle(
                                       color: Colors.deepPurple,
                                       fontSize: 20,
@@ -412,11 +462,11 @@ class ServiceDetailScreen extends StatelessWidget {
                               Container(
                                 decoration:
                                     const BoxDecoration(color: Colors.white),
-                                height: 225,
+                                height: 240,
                                 width: MediaQuery.of(context).size.width,
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: featuredServices.length,
+                                  itemCount: featuredHousing.length,
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
                                       onTap: () {
@@ -424,15 +474,15 @@ class ServiceDetailScreen extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                ServiceDetailScreen(),
+                                                HousingDetailScreen(),
                                           ),
                                         );
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.only(
                                             top: 8, bottom: 8),
-                                        child: buildServiceCard(
-                                            featuredServices[index]),
+                                        child: buildHousingCard(
+                                            featuredHousing[index]),
                                       ),
                                     );
                                   },
@@ -487,11 +537,12 @@ class ServiceDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget buildServiceCard(Map<String, String> product) {
+  Widget buildHousingCard(Map<String, String> service) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: Container(
-        width: 160,
+        width: 158,
+        // height: 225,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: Colors.white,
@@ -507,41 +558,15 @@ class ServiceDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Expanded(
-            //   child: ClipRRect(
-            //     borderRadius:
-            //         const BorderRadius.vertical(top: Radius.circular(16.0)),
-            //     child: Image.asset(
-            //       product['image']!,
-            //       fit: BoxFit.cover,
-            //     ),
-            //   ),
-            // ),
+            // Adding the '3dots.svg' icon at the start
+
             Stack(
               children: [
                 SizedBox(
                   width: double.infinity,
                   child: Image.asset(
-                    product['image']!,
+                    service['image']!,
                     fit: BoxFit.cover,
-                  ),
-                ),
-                Positioned(
-                  bottom: 10,
-                  right: 10,
-                  child: Row(
-                    children: [
-                      SvgPicture.asset('assets/images/Star.svg',
-                          width: 10, height: 15),
-                      const SizedBox(width: 4),
-                      const Text(
-                        '4.5',
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ],
                   ),
                 ),
                 Positioned(
@@ -577,7 +602,7 @@ class ServiceDetailScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          product['category']!,
+                          service['category']!,
                           style: const TextStyle(
                               fontSize: 12, color: Colors.white),
                         ),
@@ -592,7 +617,7 @@ class ServiceDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(product['title']!,
+                  Text(service['title']!,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 15)),
                   const SizedBox(height: 2),
@@ -607,46 +632,107 @@ class ServiceDetailScreen extends StatelessWidget {
                             width: 15,
                             height: 15,
                           ),
-                          const SizedBox(
-                            width: 2,
-                          ),
-                          Text(product['location']!,
+                          const SizedBox(width: 4),
+                          Text(service['location']!,
                               style: const TextStyle(
-                                  color: Colors.grey, fontSize: 14)),
+                                  color: Colors.grey, fontSize: 12)),
                         ],
                       ),
-                      Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text('From',
-                              style: TextStyle(
-                                  color: ConstantColor.darkgreyColor,
-                                  fontSize: 12)),
-                          const SizedBox(height: 2),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SvgPicture.asset(
-                                "assets/images/tag.svg",
-                                width: 20,
-                                height: 20,
-                              ),
-                              const SizedBox(
-                                width: 2,
-                              ),
-                              Text(product['price']!,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                      color: ConstantColor.primaryColor)),
-                            ],
+                          SvgPicture.asset(
+                            "assets/images/tag.svg",
+                            width: 20,
+                            height: 20,
+                          ),
+                          const SizedBox(width: 3),
+                          Text(service['price']!,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  color: ConstantColor.primaryColor)),
+                        ],
+                      ),
+                      // const SizedBox(height: 2),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 2,
+                  ),
+                  const Text(
+                    'Furnished',
+                    style: TextStyle(
+                        fontSize: 10,
+                        color: ConstantColor.primaryColor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 3,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/images/area.svg",
+                            width: 14,
+                            height: 14,
+                          ),
+                          const SizedBox(width: 2),
+                          const Text(
+                            '4500 sq.ft',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
                           ),
                         ],
-                      )
+                      ),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/images/bath.svg",
+                            width: 14,
+                            height: 14,
+                          ),
+                          const SizedBox(width: 2),
+                          const Text(
+                            '2',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/images/bed.svg",
+                            width: 14,
+                            height: 14,
+                          ),
+                          const SizedBox(width: 2),
+                          const Text(
+                            '2',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   )
                 ],
               ),
             ),
+            // const SizedBox(height: 10),
+            // const Divider(
+            //   color: Colors.grey,
+            // ),
           ],
         ),
       ),

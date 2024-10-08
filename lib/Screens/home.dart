@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/Screens/housing_details_Screen.dart';
 import 'package:uzaar_market/Screens/product_details_screen.dart';
 import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/service_detail_Screen.dart';
@@ -127,15 +128,15 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, String>> servicesCatogery = [
     {
       'title': 'Tech',
-      'image': 'assets/images/tech.png' // Replace with your image asset
+      'image': 'assets/images/tech.svg' // Replace with your image asset
     },
     {
       'title': 'Designing',
-      'image': 'assets/images/barber.png' // Replace with your image asset
+      'image': 'assets/images/designing.svg' // Replace with your image asset
     },
     {
       'title': 'Medical',
-      'image': 'assets/images/health.png' // Replace with your image asset
+      'image': 'assets/images/medical.svg' // Replace with your image asset
     },
 
     // Add more services here
@@ -143,7 +144,7 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, String>> housingCatogery = [
     {
       'title': 'Rental',
-      'image': 'assets/images/rental.png' // Replace with your image asset
+      'image': 'assets/images/rentall.png' // Replace with your image asset
     },
     {
       'title': 'ForSale',
@@ -492,7 +493,7 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: featuredServices.length,
                   itemBuilder: (context, index) {
-                                       return GestureDetector(
+                    return GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
@@ -518,9 +519,19 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: featuredHousing.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 8, bottom: 8),
-                      child: buildHousingCard(featuredHousing[index]),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HousingDetailScreen(),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8, bottom: 8),
+                        child: buildHousingCard(featuredHousing[index]),
+                      ),
                     );
                   },
                 ),
