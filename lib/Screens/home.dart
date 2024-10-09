@@ -128,15 +128,23 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, String>> servicesCatogery = [
     {
       'title': 'Tech',
-      'image': 'assets/images/tech.svg' // Replace with your image asset
+      'image': 'assets/images/tech.png' // Replace with your image asset
     },
     {
       'title': 'Designing',
-      'image': 'assets/images/designing.svg' // Replace with your image asset
+      'image': 'assets/images/designing.png' // Replace with your image asset
+    },
+    {
+      'title': 'Beauty',
+      'image': 'assets/images/beauty.png' // Replace with your image asset
     },
     {
       'title': 'Medical',
-      'image': 'assets/images/medical.svg' // Replace with your image asset
+      'image': 'assets/images/health.png' // Replace with your image asset
+    },
+    {
+      'title': 'Printing',
+      'image': 'assets/images/print.png' // Replace with your image asset
     },
 
     // Add more services here

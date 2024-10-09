@@ -26,4 +26,9 @@ class ConstantIconPath {
   static String filledlocationSvgPath = "assets/images/location.svg";
   static String passwordSvgPath = "assets/images/passwordicon.svg";
   static String filledeyeoffSvgPath = "assets/images/filledeye-off.svg";
+  static String paypalSvgPath = "assets/images/paypal.svg";
+  static String zelleSvgPath = "assets/images/zelle.svg";
+  static String cashappSvgPath = "assets/images/cashapp.svg";
+
+
 }
