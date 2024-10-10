@@ -60,7 +60,7 @@ class _SignupState extends State<Signup> {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25),
                             borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 21, 21, 21))),
+                                color: ConstantColor.lightgreyColor)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
                           borderSide: const BorderSide(
@@ -91,7 +91,7 @@ class _SignupState extends State<Signup> {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25),
                             borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 21, 21, 21))),
+                                color: ConstantColor.lightgreyColor)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
                           borderSide: const BorderSide(
@@ -127,7 +127,7 @@ class _SignupState extends State<Signup> {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25),
                             borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 21, 21, 21))),
+                                color: ConstantColor.lightgreyColor)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
                           borderSide: const BorderSide(
@@ -160,7 +160,7 @@ class _SignupState extends State<Signup> {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25),
                             borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 21, 21, 21))),
+                                color: ConstantColor.lightgreyColor)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
                           borderSide: const BorderSide(
@@ -297,7 +297,7 @@ class _SignupState extends State<Signup> {
                           'Already have an Account?',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.black),
                         ),
                         TextButton(

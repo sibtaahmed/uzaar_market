@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/constants.dart';
 
 class ProductList extends StatelessWidget {
   const ProductList({super.key});
@@ -105,7 +106,7 @@ class ProductCard extends StatelessWidget {
                 // Handle more options
               },
               icon: const Icon(Icons.more_vert),
-              color: Colors.grey,
+              color: ConstantColor.primaryColor,
             ),
           ],
         ),

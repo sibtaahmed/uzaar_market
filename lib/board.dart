@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/signup.dart';
 
 class Boarding extends StatefulWidget {
@@ -99,7 +100,7 @@ class _BoardingState extends State<Boarding> {
                     activeDotDecoration: DotDecoration(
                       width: 40,
                       height: 15,
-                      color: Colors.purple,
+                      color: ConstantColor.primaryColor,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     dotDecoration: DotDecoration(
@@ -133,11 +134,11 @@ class _BoardingState extends State<Boarding> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    backgroundColor: Colors.purple,
+                    backgroundColor: ConstantColor.primaryColor,
                   ),
                   child: Text(
                     currentPageIndex == onboardingData.length - 1
-                        ? 'Get Started'
+                        ? 'Continue'
                         : 'Next',
                     style: const TextStyle(
                         fontSize: 18,

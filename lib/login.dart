@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25),
                             borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 21, 21, 21))),
+                                color: ConstantColor.lightgreyColor)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
                           borderSide: const BorderSide(
@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25),
                             borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 21, 21, 21))),
+                                color: ConstantColor.lightgreyColor)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
                           borderSide: const BorderSide(

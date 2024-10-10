@@ -81,7 +81,7 @@ class _ListProductScreenState extends State<ListProductScreen> {
                                 end: Alignment.bottomCenter,
                               )
                             : LinearGradient(
-                                colors: [Colors.grey[300]!, Colors.grey[300]!],
+                                colors: [Colors.grey[100]!, Colors.grey[100]!],
                               ),
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -98,7 +98,7 @@ class _ListProductScreenState extends State<ListProductScreen> {
                           shadowColor: Colors.transparent,
                           foregroundColor: index == selectedTabIndex
                               ? Colors.white
-                              : Colors.grey,
+                              : ConstantColor.darkgreyColor,
                         ),
                         child: Text(categories[index]),
                       ),
@@ -121,13 +121,13 @@ class _ListProductScreenState extends State<ListProductScreen> {
   Widget getScreenForSelectedTab() {
     switch (selectedTabIndex) {
       case 0:
-        return ProductList(); // Replace with your Products screen widget
+        return const ProductList(); // Replace with your Products screen widget
       case 1:
         return const ServiceList(); // Replace with your Services screen widget
       case 2:
-        return  HouseList(); // Replace with your Housing screen widget
+        return const HouseList(); // Replace with your Housing screen widget
       default:
-        return ProductList();
+        return const ProductList();
     }
   }
 }

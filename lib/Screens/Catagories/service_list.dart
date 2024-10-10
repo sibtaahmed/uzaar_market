@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/constants.dart';
 
 class ServiceList extends StatelessWidget {
   const ServiceList({super.key});
@@ -92,7 +93,7 @@ class ProductCard extends StatelessWidget {
                           const SizedBox(width: 20),
                           SvgPicture.asset(
                             "assets/images/3dots.svg",
-                            color: Colors.grey,
+                            color: ConstantColor.primaryColor,
                             width: 20,
                             height: 20,
                           ),

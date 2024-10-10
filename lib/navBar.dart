@@ -5,6 +5,7 @@ import 'package:uzaar_market/Screens/add_product_screen.dart';
 import 'package:uzaar_market/Screens/home.dart';
 import 'package:uzaar_market/Screens/listing_product_screen.dart';
 import 'package:uzaar_market/Screens/profile_Screen.dart';
+
 import 'package:uzaar_market/Screens/search_product_screen.dart';
 
 class Navbar extends StatefulWidget {
@@ -36,11 +37,11 @@ class _NavbarState extends State<Navbar> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: const [
-          HomePage(),
-          SearchProductScreen(),
-          AddProductScreen(),
-          ListProductScreen(),
+        children: [
+          const HomePage(),
+          const SearchProductScreen(),
+          const AddProductScreen(),
+          const ListProductScreen(),
           ProfileScreen(),
         ],
       ),

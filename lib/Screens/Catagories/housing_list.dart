@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/constants.dart';
 
 void main() => runApp(const MaterialApp(home: HouseList()));
 
@@ -9,6 +10,7 @@ class HouseList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       // appBar: AppBar(
       //   title: Text('House Listings'),
       //   backgroundColor: Colors.deepPurple,
@@ -54,6 +56,7 @@ class HouseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -232,7 +235,7 @@ class HouseCard extends StatelessWidget {
                 // Handle more options
               },
               icon: const Icon(Icons.more_vert),
-              color: Colors.grey,
+              color: ConstantColor.primaryColor,
             ),
           ],
         ),

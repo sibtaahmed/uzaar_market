@@ -55,7 +55,6 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Category Tabs
@@ -79,7 +78,7 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
                                 end: Alignment.bottomCenter,
                               )
                             : LinearGradient(
-                                colors: [Colors.grey[300]!, Colors.grey[300]!],
+                                colors: [Colors.grey[100]!, Colors.grey[100]!],
                               ),
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -96,7 +95,7 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
                           shadowColor: Colors.transparent,
                           foregroundColor: index == selectedTabIndex
                               ? Colors.white
-                              : Colors.grey,
+                              : ConstantColor.darkgreyColor,
                         ),
                         child: Text(categories[index]),
                       ),
