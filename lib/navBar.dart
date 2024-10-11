@@ -43,6 +43,7 @@ class _NavbarState extends State<Navbar> {
           const AddProductScreen(),
           const ListProductScreen(),
           ProfileScreen(),
+          
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

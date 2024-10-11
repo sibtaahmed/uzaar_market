@@ -5,27 +5,40 @@ import 'package:uzaar_market/Screens/home.dart';
 import 'package:uzaar_market/mainScreen.dart';
 import 'package:uzaar_market/navBar.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class EditProfile extends StatefulWidget {
+  const EditProfile({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<EditProfile> createState() => _EditProfileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+
       appBar: AppBar(
         forceMaterialTransparency: true,
-        scrolledUnderElevation: 0,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          'Complete Profile',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        elevation: 0,
+        leading: IconButton(
+          icon: SvgPicture.asset('assets/images/menu.svg'),
+          onPressed: () {},
         ),
-        centerTitle: true,
+        title: const Text(
+          ' EditProfile',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+        ),
+        actions: [
+          IconButton(
+            icon: SvgPicture.asset('assets/images/chat.svg'),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset('assets/images/bell.svg'),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -36,52 +49,6 @@ class _ProfileState extends State<Profile> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Stack(
-                    children: [
-                      Container(
-                          height: 120,
-                          width: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(color: Colors.grey),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'assets/images/Logo.png',
-                              height: 25,
-                            ),
-                          )),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    ConstantColor.primaryColor,
-                                    ConstantColor.orangeColor
-                                  ],
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight),
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: SvgPicture.asset(
-                                'assets/images/camera.svg',
-                                height: 20,
-                                width: 20,
-                              ),
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
@@ -250,7 +217,7 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 110),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -271,29 +238,9 @@ class _ProfileState extends State<Profile> {
                   ),
                   child: const Center(
                     child: Text(
-                      'Signup',
+                      'Save Changes',
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: TextButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => const Signup()));
-                        },
-                        child: const Text(
-                          'Skip for now',
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: Color(0xFF450e8b)),
-                        )),
                   ),
                 ),
               ],
