@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/Screens/home.dart';
 import 'package:uzaar_market/mainScreen.dart';
@@ -17,7 +18,6 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       appBar: AppBar(
         forceMaterialTransparency: true,
         elevation: 0,
@@ -220,11 +220,6 @@ class _EditProfileState extends State<EditProfile> {
                 const SizedBox(height: 110),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Navbar(),
-                        ));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF450e8b),
