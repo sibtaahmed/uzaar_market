@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/Screens/housing_details_Screen.dart';
 import 'package:uzaar_market/Screens/product_details_screen.dart';
+import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/service_detail_Screen.dart';
 
@@ -212,14 +213,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const SideMenu(),
       appBar: AppBar(
         forceMaterialTransparency: true,
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: SvgPicture.asset('assets/images/menu.svg'),
-          onPressed: () {},
-        ),
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: SvgPicture.asset('assets/images/menu.svg'),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+              print('Menu button pressed');
+            },
+          );
+        }),
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
