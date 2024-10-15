@@ -9,6 +9,9 @@ import 'package:uzaar_market/Screens/Catagories/products_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/service_list.dart';
 import 'package:uzaar_market/Screens/Catagories/services_catagory.dart';
 import 'package:uzaar_market/Screens/Offers.dart';
+import 'package:uzaar_market/Screens/SalesPendingList.dart';
+import 'package:uzaar_market/Screens/SalesOffersList.dart';
+import 'package:uzaar_market/Screens/SalesPreviousList.dart';
 import 'package:uzaar_market/constants.dart';
 
 // // Assuming the 'constants.dart' file defines this class
@@ -18,14 +21,14 @@ import 'package:uzaar_market/constants.dart';
 //   static const Color lightgreyColor = Colors.grey;
 // }
 
-class MyOrdersScreen extends StatefulWidget {
-  const MyOrdersScreen({super.key});
+class SalesOrdersScreen extends StatefulWidget {
+  const SalesOrdersScreen({super.key});
 
   @override
-  State<MyOrdersScreen> createState() => _MyOrdersScreenState();
+  State<SalesOrdersScreen> createState() => _SalesOrdersScreenState();
 }
 
-class _MyOrdersScreenState extends State<MyOrdersScreen> {
+class _SalesOrdersScreenState extends State<SalesOrdersScreen> {
   final List<String> categories = [
     'Offers',
     'Pending',
@@ -40,7 +43,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
         forceMaterialTransparency: true,
         elevation: 0,
         title: const Text(
-          'My Orders',
+          'Orders',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
         ),
         actions: [
@@ -120,13 +123,13 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
   Widget getScreenForSelectedTab() {
     switch (selectedTabIndex) {
       case 0:
-        return const OffersList(); // Replace with your Products screen widget
+        return const SalesOffersList(); // Replace with your Products screen widget
       case 1:
-        return const PendingList(); // Replace with your Services screen widget
+        return const SalesPendingList(); // Replace with your Services screen widget
       case 2:
-        return const PreviousList(); // Replace with your Housing screen widget
+        return const SalesPreviousList(); // Replace with your Housing screen widget
       default:
-        return const OffersList(); // Default screen
+        return const SalesOffersList(); // Default screen
     }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/Screens/listing_product_screen.dart';
 import 'package:uzaar_market/Screens/myorders.dart';
+import 'package:uzaar_market/Screens/sales_orders.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});
@@ -67,9 +68,10 @@ class SideMenu extends StatelessWidget {
               title: const Text('Sales Orders',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               onTap: () {
-                // Navigate to My Orders screen
-                Navigator.pop(context);
-                // You can add navigation logic here
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SalesOrdersScreen()));
               },
             ),
 

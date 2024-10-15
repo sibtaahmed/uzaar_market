@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/constants.dart';
 
-class PendingList extends StatelessWidget {
-  const PendingList({super.key});
+class SalesPendingList extends StatelessWidget {
+  const SalesPendingList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,14 +12,14 @@ class PendingList extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Row with Text and Button appears only once
+          // Add the Row above the list of cards (once)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Product',
+                  'Products',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -52,13 +52,13 @@ class PendingList extends StatelessWidget {
             ),
           ),
 
-          // List of cards
+          // List of offers (cards)
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(10),
               itemCount: 4, // The number of product items
               itemBuilder: (context, index) {
-                return const PendingCard();
+                return const OffersCard();
               },
             ),
           ),
@@ -68,8 +68,8 @@ class PendingList extends StatelessWidget {
   }
 }
 
-class PendingCard extends StatelessWidget {
-  const PendingCard({super.key});
+class OffersCard extends StatelessWidget {
+  const OffersCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -145,17 +145,68 @@ class PendingCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // const SizedBox(height: 5),
+                  // const Row(
+                  //   children: [
+                  //     Text(
+                  //       '\$12',
+                  //       style: TextStyle(
+                  //         fontSize: 14,
+                  //         color: Colors.deepPurple,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //     SizedBox(width: 5),
+                  //     Text(
+                  //       'Offered',
+                  //       style: TextStyle(
+                  //         fontSize: 14,
+                  //         color: Colors.grey,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ),
-            // Date or other options
-            const Text(
-              '08/08/2023',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
+            SizedBox(
+              height: 80,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    '08/08/2023',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                    ),
+                  ),
+                  // Replacing the previous buttons with a blue container
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 5.0),
+                    decoration: BoxDecoration(
+                      color: ConstantColor.primaryColor, // Blue background
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: const Row(
+                      children: [
+                        Text(
+                          'Pending',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(width: 5),
+                        Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.white, // White down arrow
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ),
+            )
           ],
         ),
       ),

@@ -2,26 +2,74 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/constants.dart';
 
-class OffersList extends StatelessWidget {
-  const OffersList({super.key});
+class PreviousList extends StatelessWidget {
+  const PreviousList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView.builder(
-        padding: const EdgeInsets.all(10),
-        itemCount: 4, // The number of product items
-        itemBuilder: (context, index) {
-          return const OffersCard();
-        },
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Add the Row once before the list
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Product',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 5.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.grey[100]!, width: 2),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Products',
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                      Icon(
+                        Icons.arrow_drop_down,
+                        color: ConstantColor.primaryColor,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+
+          // List of product cards
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.all(10),
+              itemCount: 4, // The number of product items
+              itemBuilder: (context, index) {
+                return const PreviousCard();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class OffersCard extends StatelessWidget {
-  const OffersCard({super.key});
+class PreviousCard extends StatelessWidget {
+  const PreviousCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +170,7 @@ class OffersCard extends StatelessWidget {
                 ],
               ),
             ),
-            // More Options Icon
+            // Date or other options
             const Text(
               '08/08/2023',
               style: TextStyle(
