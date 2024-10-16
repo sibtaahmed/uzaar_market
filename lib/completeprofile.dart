@@ -271,7 +271,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   child: const Center(
                     child: Text(
-                      'Signup',
+                      'Continue',
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),

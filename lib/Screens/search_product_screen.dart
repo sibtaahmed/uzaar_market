@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uzaar_market/Screens/Catagories/housing_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/products_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/services_catagory.dart';
+import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
 
 // // Assuming the 'constants.dart' file defines this class
@@ -30,12 +31,15 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const SideMenu(),
       appBar: AppBar(
         forceMaterialTransparency: true,
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset('assets/images/menu.svg'),
-          onPressed: () {},
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
         title: const Text(
           'Explore',

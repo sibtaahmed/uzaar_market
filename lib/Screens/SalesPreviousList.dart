@@ -14,7 +14,7 @@ class SalesPreviousList extends StatelessWidget {
         children: [
           // Add the Row above the list of cards (once)
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.only(top: 12, left: 10, right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

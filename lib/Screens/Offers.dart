@@ -14,7 +14,7 @@ class OffersList extends StatelessWidget {
         children: [
           // Add the Row above the list of cards (once)
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.only(top: 12, left: 10, right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -58,11 +58,11 @@ class OffersList extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               itemCount: 4, // The number of product items
               itemBuilder: (context, index) {
-                // Pass a different status for each card for testing purposes
+                // Set the status based on the card index
                 String offerStatus;
                 if (index == 0) {
                   offerStatus = 'accepted';
-                } else if (index == 1) {
+                } else if (index == 1 || index == 3) {
                   offerStatus = 'pending';
                 } else {
                   offerStatus = 'rejected';
@@ -182,7 +182,7 @@ class OffersCard extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 110,
+              height: 100,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -193,27 +193,29 @@ class OffersCard extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          _getButtonColor(), // Call the function to set the color
-                      shadowColor: Colors.black,
-                      elevation: 5,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 8),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
+                  // Status container with dynamic color and bold text
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 3.0),
+                    decoration: BoxDecoration(
+                      color: _getButtonColor(), // Dynamic color based on status
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
-                    onPressed: () {},
-                    child: Center(
-                      child: Text(
-                        _getButtonText(), // Call the function to set the text
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 13),
-                      ),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(3.0),
+                          child: Text(
+                            _getButtonText(), // Dynamic text based on status
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold, // Bold text style
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  )
+                  ),
                 ],
               ),
             )
@@ -227,12 +229,12 @@ class OffersCard extends StatelessWidget {
   String _getButtonText() {
     switch (offerStatus) {
       case 'accepted':
-        return 'ACCEPTED';
+        return 'Accepted';
       case 'pending':
-        return 'PENDING';
+        return 'Pending';
       case 'rejected':
       default:
-        return 'REJECTED';
+        return 'Rejected';
     }
   }
 
@@ -240,12 +242,12 @@ class OffersCard extends StatelessWidget {
   Color _getButtonColor() {
     switch (offerStatus) {
       case 'accepted':
-        return Colors.green;
+        return const Color(0xFF00D796);
       case 'pending':
-        return Colors.orange;
+        return const Color(0xFFFEBC5A);
       case 'rejected':
       default:
-        return Colors.red;
+        return const Color(0xFFFB4B40);
     }
   }
 }

@@ -14,12 +14,12 @@ class SalesOffersList extends StatelessWidget {
         children: [
           // Add the Row above the list of cards (once)
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.only(top: 12, left: 10, right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Product',
+                  'Products',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class OffersCard extends StatelessWidget {
                   const Text(
                     'Product Name',
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -185,10 +185,10 @@ class OffersCard extends StatelessWidget {
                   // Replacing the previous buttons with a blue container
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 5.0),
+                        horizontal: 8.0, vertical: 3.0),
                     decoration: BoxDecoration(
                       color: ConstantColor.primaryColor, // Blue background
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(25.0),
                     ),
                     child: const Row(
                       children: [
@@ -199,7 +199,7 @@ class OffersCard extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
-                        SizedBox(width: 5),
+                        // SizedBox(width: 2),
                         Icon(
                           Icons.arrow_drop_down,
                           color: Colors.white, // White down arrow

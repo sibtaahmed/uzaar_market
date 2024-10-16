@@ -1,107 +1,176 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:uzaar_market/constants.dart';
 
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({super.key});
 
   @override
-  State<AddProductScreen> createState() => _AddProductScreenState();
+  _AddProductScreenState createState() => _AddProductScreenState();
 }
 
 class _AddProductScreenState extends State<AddProductScreen> {
-  List selectedCategory = ['Products', 'Services', 'Housing'];
+  int _selectedIndex = 0;
+  final PageController _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: getTabLength(),
-      child: Scaffold(
-        appBar: AppBar(
-          forceMaterialTransparency: true,
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: SvgPicture.asset('assets/images/menu.svg'),
-            onPressed: () {},
-          ),
-          title: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Sell',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-              ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              icon: SvgPicture.asset('assets/images/chat.svg'),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: SvgPicture.asset('assets/images/bell.svg'),
-              onPressed: () {},
-            ),
-          ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+        elevation: 0,
+        leading: IconButton(
+          icon: SvgPicture.asset('assets/images/menu.svg'),
+          onPressed: () {
+            // Handle menu click
+          },
         ),
-        body: Column(
+        title: const Text(
+          'Sell',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+        ),
+        actions: [
+          IconButton(
+            icon: SvgPicture.asset('assets/images/chat.svg'),
+            onPressed: () {
+              // Handle chat click
+            },
+          ),
+          IconButton(
+            icon: SvgPicture.asset('assets/images/bell.svg'),
+            onPressed: () {
+              // Handle notifications click
+            },
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('What do you want to sell?'),
+            // SmoothPageIndicator
+            Center(
+              child: SmoothPageIndicator(
+                controller: _pageController,
+                count: 3, // Set count based on the number of screens/pages
+                effect: CustomizableEffect(
+                  activeDotDecoration: DotDecoration(
+                    width: 40,
+                    height: 15,
+                    color:
+                        ConstantColor.primaryColor, // Use a single color here
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  dotDecoration: DotDecoration(
+                    width: 40,
+                    height: 15,
+                    color: Colors.grey[100]!,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  spacing: 8,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Question Text
+            const Text(
+              "What do you want to sell?",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+
+            // Category Buttons for Products, Services, Housing
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                buildCategoryButton('Products'),
-                buildCategoryButton('Services'),
-                buildCategoryButton('Housing'),
+                _buildOptionButton('Products', 0),
+                _buildOptionButton('Services', 1),
+                _buildOptionButton('Housing', 2),
               ],
             ),
-            // Tab Bar
-            if (selectedCategory == 'Products' ||
-                selectedCategory == 'Services' ||
-                selectedCategory == 'Housing')
-              TabBar(
-                tabs: getTabs(),
-                labelColor: Colors.deepPurple,
-                unselectedLabelColor: Colors.grey,
-                indicatorColor: Colors.deepPurple,
-              ),
-            Expanded(
-              child: TabBarView(
-                children: getTabScreens(),
-              ),
-            ),
-            // Upload or Take Picture Section
-            Column(
+            const SizedBox(height: 30),
+
+            // Upload Section
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
                   'Upload or Take Picture',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 16),
-                IconButton(
-                  onPressed: () {
-                    // Handle upload/take picture
-                  },
-                  icon: const Icon(Icons.camera_alt, color: Colors.deepPurple),
-                  iconSize: 50,
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle next button click
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+                Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(colors: [
+                        ConstantColor.primaryColor,
+                        ConstantColor.orangeColor
+                      ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                      // color: Colors.grey,
+                      borderRadius: BorderRadius.circular(100),
                     ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: SvgPicture.asset(
+                        'assets/images/camera.svg',
+                        height: 10,
+                        width: 10,
+                      ),
+                    )),
+              ],
+            ),
+            const SizedBox(height: 20),
+
+            // Placeholder for Image Upload
+            Expanded(
+              child: Center(
+                child: Container(
+                  height: 150,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: Colors.grey.shade300),
                   ),
-                  child: const Text(
-                    'Next',
-                    style: TextStyle(color: Colors.white),
+                  child: IconButton(
+                    icon: SvgPicture.asset('assets/images/upload.svg'),
+                    iconSize: 10,
+                    onPressed: () {},
                   ),
                 ),
-              ],
+              ),
+            ),
+
+            // Next Button at the Bottom
+            ElevatedButton(
+              onPressed: () {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (context) => const Navbar(),
+                //     ));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF450e8b),
+                shadowColor: Colors.black,
+                elevation: 5,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              child: const Center(
+                child: Text(
+                  'Next',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ),
             ),
           ],
         ),
@@ -109,83 +178,34 @@ class _AddProductScreenState extends State<AddProductScreen> {
     );
   }
 
-  // Method to get tab length
-  int getTabLength() {
-    if (selectedCategory == 'Products') {
-      return 3;
-    } else if (selectedCategory == 'Services' ||
-        selectedCategory == 'Housing') {
-      return 2;
-    }
-    return 0;
-  }
-
-  // Method to get tabs for each category
-  List<Widget> getTabs() {
-    if (selectedCategory == 'Products') {
-      return [
-        const Tab(text: 'Product 1'),
-        const Tab(text: 'Product 2'),
-        const Tab(text: 'Product 3'),
-      ];
-    } else if (selectedCategory == 'Services') {
-      return [
-        const Tab(text: 'Service 1'),
-        const Tab(text: 'Service 2'),
-      ];
-    } else if (selectedCategory == 'Housing') {
-      return [
-        const Tab(text: 'Housing 1'),
-        const Tab(text: 'Housing 2'),
-      ];
-    }
-    return [];
-  }
-
-  // Method to get Tab screens
-  List<Widget> getTabScreens() {
-    if (selectedCategory == 'Products') {
-      return [
-        const Center(child: Text('Product Screen 1')),
-        const Center(child: Text('Product Screen 2')),
-        const Center(child: Text('Product Screen 3')),
-      ];
-    } else if (selectedCategory == 'Services') {
-      return [
-        const Center(child: Text('Service Screen 1')),
-        const Center(child: Text('Service Screen 2')),
-      ];
-    } else if (selectedCategory == 'Housing') {
-      return [
-        const Center(child: Text('Housing Screen 1')),
-        const Center(child: Text('Housing Screen 2')),
-      ];
-    }
-    return [];
-  }
-
-  // Method to build category buttons
-  Widget buildCategoryButton(String category) {
-    bool isSelected = selectedCategory == category;
+  Widget _buildOptionButton(String text, int index) {
+    bool isSelected = _selectedIndex == index;
     return GestureDetector(
       onTap: () {
-        setState(() {});
+        setState(() {
+          _selectedIndex = index;
+        });
       },
       child: Container(
-        margin: const EdgeInsets.all(8),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
           gradient: isSelected
               ? const LinearGradient(
-                  colors: [Colors.deepOrange, Colors.deepPurple])
+                  colors: [
+                    ConstantColor.primaryColor,
+                    ConstantColor.orangeColor
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )
               : null,
-          color: isSelected ? null : Colors.grey[300],
-          borderRadius: BorderRadius.circular(20),
+          color: isSelected ? null : Colors.grey.shade100,
+          borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
-          category,
+          text,
           style: TextStyle(
-            color: isSelected ? Colors.white : Colors.black,
+            color: isSelected ? Colors.white : ConstantColor.darkgreyColor,
             fontWeight: FontWeight.bold,
           ),
         ),

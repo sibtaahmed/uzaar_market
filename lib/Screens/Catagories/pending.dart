@@ -14,7 +14,7 @@ class PendingList extends StatelessWidget {
         children: [
           // Row with Text and Button appears only once
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.only(top: 12, left: 10, right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
