@@ -46,35 +46,7 @@ class _HousingCatagoryState extends State<HousingCatagory> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search here',
-                  hintStyle: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18,
-                  ),
-                  prefixIcon: IconButton(
-                    icon: SvgPicture.asset('assets/images/search.svg'),
-                    onPressed: () {},
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25),
-                    borderSide: const BorderSide(
-                      color: ConstantColor.lightgreyColor,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25),
-                    borderSide: const BorderSide(
-                      color: ConstantColor.lightgreyColor,
-                      width: 1.0,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+
             // Filter Chips
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,

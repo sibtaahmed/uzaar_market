@@ -35,12 +35,15 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
       appBar: AppBar(
         forceMaterialTransparency: true,
         elevation: 0,
-        leading: IconButton(
-          icon: SvgPicture.asset('assets/images/menu.svg'),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
-        ),
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: SvgPicture.asset('assets/images/menu.svg'),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+              print('Menu button pressed');
+            },
+          );
+        }),
         title: const Text(
           'Explore',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
@@ -106,6 +109,36 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
                     ),
                   );
                 },
+              ),
+            ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 4),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search here',
+                  hintStyle: TextStyle(
+                    color: Colors.grey[400],
+                    fontSize: 18,
+                  ),
+                  prefixIcon: IconButton(
+                    icon: SvgPicture.asset('assets/images/search.svg'),
+                    onPressed: () {},
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(
+                      color: ConstantColor.lightgreyColor,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: const BorderSide(
+                      color: ConstantColor.lightgreyColor,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
               ),
             ),
 

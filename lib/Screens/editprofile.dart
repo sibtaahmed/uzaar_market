@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
-import 'package:uzaar_market/Screens/home.dart';
-import 'package:uzaar_market/mainScreen.dart';
-import 'package:uzaar_market/navBar.dart';
+
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});

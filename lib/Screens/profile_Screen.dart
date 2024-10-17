@@ -203,7 +203,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/Screens/Personalinfo.dart';
 import 'package:uzaar_market/Screens/Reviews.dart';
+import 'package:uzaar_market/Screens/chatscreen.dart';
 import 'package:uzaar_market/Screens/editprofile.dart';
+import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -223,13 +225,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const SideMenu(),
       appBar: AppBar(
         forceMaterialTransparency: true,
         elevation: 0,
-        leading: IconButton(
-          icon: SvgPicture.asset('assets/images/menu.svg'),
-          onPressed: () {},
-        ),
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: SvgPicture.asset('assets/images/menu.svg'),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+              print('Menu button pressed');
+            },
+          );
+        }),
         title: const Text(
           'Profile',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
@@ -237,7 +245,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         actions: [
           IconButton(
             icon: SvgPicture.asset('assets/images/chat.svg'),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ChatScreen(),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: SvgPicture.asset('assets/images/bell.svg'),

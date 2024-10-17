@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:uzaar_market/Screens/Catagories/housing_catagory.dart';
+
 import 'package:uzaar_market/Screens/Catagories/housing_list.dart';
 import 'package:uzaar_market/Screens/Catagories/product_list.dart';
-import 'package:uzaar_market/Screens/Catagories/products_catagory.dart';
+
 import 'package:uzaar_market/Screens/Catagories/service_list.dart';
-import 'package:uzaar_market/Screens/Catagories/services_catagory.dart';
+
+import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
 
 // // Assuming the 'constants.dart' file defines this class
@@ -33,13 +34,19 @@ class _ListProductScreenState extends State<ListProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const SideMenu(),
       appBar: AppBar(
         forceMaterialTransparency: true,
         elevation: 0,
-        leading: IconButton(
-          icon: SvgPicture.asset('assets/images/menu.svg'),
-          onPressed: () {},
-        ),
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: SvgPicture.asset('assets/images/menu.svg'),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+              print('Menu button pressed');
+            },
+          );
+        }),
         title: const Text(
           'Listings',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
