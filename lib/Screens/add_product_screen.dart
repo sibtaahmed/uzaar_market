@@ -52,16 +52,17 @@ class _AddProductScreenState extends State<AddProductScreen> {
   int _selectedIndex1 = 0;
 
   final PageController pageController = PageController(initialPage: 0);
-void changeIndex() {
-  setState(() {
-    // Increment the selected index and wrap around if it exceeds the number of buttons
-    if (_selectedIndex1 < 3 - 1) {
-      _selectedIndex1++;
-    } else {
-      _selectedIndex1 = 0; // Wrap around to the first button if the last one is reached
-    }
-  });
-}
+  void changeIndex() {
+    setState(() {
+      // Increment the selected index and wrap around if it exceeds the number of buttons
+      if (_selectedIndex1 < 3 - 1) {
+        _selectedIndex1++;
+      } else {
+        _selectedIndex1 =
+            0; // Wrap around to the first button if the last one is reached
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

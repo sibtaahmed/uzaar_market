@@ -9,7 +9,7 @@ import 'package:uzaar_market/Screens/Catagories/service_list.dart';
 import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
 
-// // Assuming the 'constants.dart' file defines this class
+//  Assuming the 'constants.dart' file defines this class
 // class ConstantColor {
 //   static const Color primaryColor = Colors.purple;
 //   static const Color orangeColor = Colors.orange;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uzaar_market/Screens/sellerprofile.dart';
 import 'package:uzaar_market/constants.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -260,9 +261,19 @@ class ProductDetailScreen extends StatelessWidget {
                                                 border: Border.all(
                                                     color: Colors.grey),
                                               ),
-                                              child: Image.asset(
-                                                'assets/images/lisa1.png',
-                                                height: 25,
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const SellerProfileScreen()),
+                                                  );
+                                                },
+                                                child: Image.asset(
+                                                  'assets/images/lisa1.png',
+                                                  height: 25,
+                                                ),
                                               )),
                                           Positioned(
                                               bottom: 0,
