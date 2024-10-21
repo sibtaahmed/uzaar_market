@@ -203,6 +203,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/Screens/Personalinfo.dart';
 import 'package:uzaar_market/Screens/Reviews.dart';
+import 'package:uzaar_market/Screens/SellerListing.dart';
+import 'package:uzaar_market/Screens/SellerReviews.dart';
 import 'package:uzaar_market/Screens/chatscreen.dart';
 import 'package:uzaar_market/Screens/editprofile.dart';
 import 'package:uzaar_market/Screens/sellerinfo.dart';
@@ -313,32 +315,32 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
                         'assets/images/lisa1.png',
                         // height: 80,
                       )),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                              colors: [
-                                ConstantColor.primaryColor,
-                                ConstantColor.orangeColor
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight),
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: SvgPicture.asset(
-                            'assets/images/camera.svg',
-                            height: 70,
-                            width: 90,
-                          ),
-                        )),
-                  ),
+                  // Positioned(
+                  //   bottom: 0,
+                  //   right: 0,
+                  //   child: Container(
+                  //       height: 30,
+                  //       width: 30,
+                  //       decoration: BoxDecoration(
+                  //         gradient: const LinearGradient(
+                  //             colors: [
+                  //               ConstantColor.primaryColor,
+                  //               ConstantColor.orangeColor
+                  //             ],
+                  //             begin: Alignment.topLeft,
+                  //             end: Alignment.bottomRight),
+                  //         color: Colors.grey,
+                  //         borderRadius: BorderRadius.circular(100),
+                  //       ),
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.all(3.0),
+                  //         child: SvgPicture.asset(
+                  //           'assets/images/camera.svg',
+                  //           height: 70,
+                  //           width: 90,
+                  //         ),
+                  //       )),
+                  // ),
                   Positioned(
                     top: 0,
                     left: 0,
@@ -379,6 +381,23 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
             const Text(
               '(14)',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/images/chat.svg'),
+                  const SizedBox(width: 15),
+                  const Text(
+                    'Start Chat',
+                    style: TextStyle(
+                        color: ConstantColor.primaryColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
             // Category Tabs
             SizedBox(
@@ -435,7 +454,7 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
             ),
 
             SizedBox(
-              height: MediaQuery.of(context).size.height - 306,
+              height: MediaQuery.of(context).size.height - 230,
               child: getScreenForSelectedTab(),
             ),
           ],
@@ -449,9 +468,9 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
       case 0:
         return const SellerInfo(); // Replace with your Products screen widget
       case 1:
-        return const ReviewScreen(); // Replace with your Services screen widget
+        return const SellerListing(); // Replace with your Services screen widget
       case 2:
-        return const ReviewScreen(); // Replace with your Housing screen widget
+        return const SellerReviews(); // Replace with your Housing screen widget
       default:
         return const SellerInfo();
     }
