@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:uzaar_market/constants.dart';
 
-class Orderdetail extends StatefulWidget {
-  const Orderdetail({super.key});
+class Orderdetailbuyer extends StatefulWidget {
+  const Orderdetailbuyer({super.key});
 
   @override
-  State<Orderdetail> createState() => _OrderdetailState();
+  State<Orderdetailbuyer> createState() => _OrderdetailbuyerState();
 }
 
-class _OrderdetailState extends State<Orderdetail> {
+class _OrderdetailbuyerState extends State<Orderdetailbuyer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,8 +143,7 @@ class _OrderdetailState extends State<Orderdetail> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8.0, vertical: 3.0),
                             decoration: BoxDecoration(
-                              color:
-                                  ConstantColor.primaryColor, // Blue background
+                              color: Colors.amber, // Blue background
                               borderRadius: BorderRadius.circular(25.0),
                             ),
                             child: const Row(
@@ -157,10 +156,10 @@ class _OrderdetailState extends State<Orderdetail> {
                                   ),
                                 ),
                                 // SizedBox(width: 2),
-                                Icon(
-                                  Icons.arrow_drop_down,
-                                  color: Colors.white, // White down arrow
-                                ),
+                                // Icon(
+                                //   Icons.arrow_drop_down,
+                                //   color: Colors.white, // White down arrow
+                                // ),
                               ],
                             ),
                           ),
@@ -187,7 +186,7 @@ class _OrderdetailState extends State<Orderdetail> {
                         // padding: const EdgeInsets.symmetric(
                         //     horizontal: 8.0, vertical: 8.0),
                         decoration: BoxDecoration(
-                          color: ConstantColor.primaryColor, // Blue background
+                          color: Colors.amber, // Blue background
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         child: const Row(
@@ -208,107 +207,160 @@ class _OrderdetailState extends State<Orderdetail> {
                             ),
                           ],
                         ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 25),
-                        child: Text(
-                          'Buyer Details',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
+                      )
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                  ),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildInfoRow(
-                        iconPath: 'assets/images/person.svg',
-                        title: 'Business Name',
-                        subtitle: 'Alaya',
+                      const Text(
+                        'Seller',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
                       ),
-                      _buildInfoRow(
-                        iconPath: 'assets/images/email.svg',
-                        title: 'Email',
-                        subtitle: 'lisafernandes@gmail.com',
+                      const SizedBox(height: 8),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.0),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Stack(
+                                      children: [
+                                        Container(
+                                            height: 50,
+                                            width: 50,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              border: Border.all(
+                                                  color: Colors.grey),
+                                            ),
+                                            child: Image.asset(
+                                              'assets/images/lisa1.png',
+                                              height: 25,
+                                            )),
+                                        Positioned(
+                                            bottom: 0,
+                                            right: 0,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: SvgPicture.asset(
+                                                'assets/images/verify1.svg',
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Column(
+                                    children: [
+                                      const SizedBox(height: 10),
+                                      const Text(
+                                        'Lisa Fernandes',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  "assets/images/location.svg",
+                                                  width: 9,
+                                                  height: 13,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                const Text(
+                                                  'Los Angeles',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ]),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 15),
+                                    child: Row(
+                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SvgPicture.asset(
+                                          "assets/images/Star.svg",
+                                          width: 16,
+                                          height: 16,
+                                        ),
+                                        const SizedBox(width: 4),
+                                        const Text(
+                                          '4.5',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 6),
+                                        const Text(
+                                          '(14)',
+                                          style: TextStyle(
+                                            color: ConstantColor.lightgreyColor,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      _buildInfoRow(
-                        iconPath: 'assets/images/call.svg',
-                        title: 'Contact',
-                        subtitle: '1234345793938',
+                      const SizedBox(
+                        height: 10,
                       ),
-                      _buildInfoRow(
-                        iconPath: 'assets/images/location.svg',
-                        title: 'Address',
-                        subtitle: 'Los Angeles',
-                      ), // Line to separate info
                     ],
                   ),
-                ),
+                )
               ],
             ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildInfoRow({
-    required String iconPath,
-    required String title,
-    required String subtitle,
-  }) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 25),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SvgPicture.asset(
-                iconPath,
-                width: 30,
-                height: 30,
-              ),
-              const SizedBox(width: 16), // Space between icon and text
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    subtitle,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 12), // Space between row and divider
-        Divider(
-          color: Colors.grey[200],
-          thickness: 1, // Thickness of the divider line
-          height: 1,
-        ),
-      ],
     );
   }
 }

@@ -12,6 +12,7 @@ import 'package:uzaar_market/Screens/Offers.dart';
 import 'package:uzaar_market/Screens/SalesPendingList.dart';
 import 'package:uzaar_market/Screens/SalesOffersList.dart';
 import 'package:uzaar_market/Screens/SalesPreviousList.dart';
+import 'package:uzaar_market/Screens/chatscreen.dart';
 import 'package:uzaar_market/constants.dart';
 
 // // Assuming the 'constants.dart' file defines this class
@@ -49,7 +50,14 @@ class _SalesOrdersScreenState extends State<SalesOrdersScreen> {
         actions: [
           IconButton(
             icon: SvgPicture.asset('assets/images/chat.svg'),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ChatScreen(),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: SvgPicture.asset('assets/images/bell.svg'),

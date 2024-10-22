@@ -17,7 +17,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        forceMaterialTransparency: true,
+
         title: const Text(
           'Settings',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
@@ -78,6 +81,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     required Function(bool) onToggleChanged,
   }) {
     return Card(
+      color: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),

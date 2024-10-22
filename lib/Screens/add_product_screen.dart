@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/Screens/chatscreen.dart';
 import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
 
@@ -89,14 +90,17 @@ class _AddProductScreenState extends State<AddProductScreen> {
           IconButton(
             icon: SvgPicture.asset('assets/images/chat.svg'),
             onPressed: () {
-              // Handle chat click
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ChatScreen(),
+                ),
+              );
             },
           ),
           IconButton(
             icon: SvgPicture.asset('assets/images/bell.svg'),
-            onPressed: () {
-              // Handle notifications click
-            },
+            onPressed: () {},
           ),
         ],
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/Screens/orderdetail_buyer.dart';
 import 'package:uzaar_market/constants.dart';
 
 class SalesOffersList extends StatelessWidget {
@@ -88,11 +89,19 @@ class OffersCard extends StatelessWidget {
             // Product Image
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                'assets/images/phone.png',
-                height: 80,
-                width: 100,
-                fit: BoxFit.cover,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Orderdetailbuyer()));
+                },
+                child: Image.asset(
+                  'assets/images/phone.png',
+                  height: 80,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             const SizedBox(width: 10),

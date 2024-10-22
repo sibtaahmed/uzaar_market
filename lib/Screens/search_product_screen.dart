@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uzaar_market/Screens/Catagories/housing_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/products_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/services_catagory.dart';
+import 'package:uzaar_market/Screens/chatscreen.dart';
 import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
 
@@ -51,7 +52,14 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
         actions: [
           IconButton(
             icon: SvgPicture.asset('assets/images/chat.svg'),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ChatScreen(),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: SvgPicture.asset('assets/images/bell.svg'),

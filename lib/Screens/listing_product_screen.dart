@@ -5,6 +5,7 @@ import 'package:uzaar_market/Screens/Catagories/housing_list.dart';
 import 'package:uzaar_market/Screens/Catagories/product_list.dart';
 
 import 'package:uzaar_market/Screens/Catagories/service_list.dart';
+import 'package:uzaar_market/Screens/chatscreen.dart';
 
 import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
@@ -54,7 +55,14 @@ class _ListProductScreenState extends State<ListProductScreen> {
         actions: [
           IconButton(
             icon: SvgPicture.asset('assets/images/chat.svg'),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ChatScreen(),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: SvgPicture.asset('assets/images/bell.svg'),

@@ -17,6 +17,7 @@ class _SellerInfoState extends State<SellerInfo> {
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         child: Column(
           children: [
+         
             _buildInfoRow(
               iconPath: 'assets/images/email.svg',
               title: 'Email',
