@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:uzaar_market/Screens/chatscreen.dart';
+import 'package:uzaar_market/Screens/chats.dart';
+import 'chatscreen.dart';
 import 'package:uzaar_market/Screens/housing_details_Screen.dart';
 import 'package:uzaar_market/Screens/notification.dart';
 import 'package:uzaar_market/Screens/product_details_screen.dart';
@@ -249,7 +250,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ChatScreen(),
+                  builder: (context) =>  ChatList(),
                 ),
               );
             },

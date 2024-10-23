@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uzaar_market/Screens/chats.dart';
 import 'package:uzaar_market/Screens/payment.dart';
 import 'package:uzaar_market/constants.dart';
 
@@ -245,12 +246,21 @@ class HousingDetailScreen extends StatelessWidget {
                             children: [
                               SvgPicture.asset('assets/images/chat.svg'),
                               const SizedBox(width: 15),
-                              const Text(
-                                'Start Chat',
-                                style: TextStyle(
-                                    color: ConstantColor.primaryColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const ChatList()),
+                                  );
+                                },
+                                child: const Text(
+                                  'Start Chat',
+                                  style: TextStyle(
+                                      color: ConstantColor.primaryColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ],
                           ),

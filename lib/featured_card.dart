@@ -76,50 +76,46 @@ class ProductDetailScreen extends StatelessWidget {
                 )
               ],
             ),
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // ... (previous code remains unchanged)
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              // ... (previous code remains unchanged)
 
-                  const SizedBox(height: 16),
-                  const Text(
-                    'More by This Seller',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  const SizedBox(height: 8),
+              const SizedBox(height: 16),
+              const Text(
+                'More by This Seller',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              const SizedBox(height: 8),
 
-                  // here
-                  _buildSectionTitle('Featured Products'),
-                  Container(
-                    decoration: const BoxDecoration(color: Colors.white),
-                    height: 225,
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: moreBySeller.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ProductDetailScreen(),
-                              ),
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8, bottom: 8),
-                            child: _buildProductCard(moreBySeller[index]),
+              // here
+              _buildSectionTitle('Featured Products'),
+              Container(
+                decoration: const BoxDecoration(color: Colors.white),
+                height: 225,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: moreBySeller.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetailScreen(),
                           ),
                         );
                       },
-                    ),
-                  ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8, bottom: 8),
+                        child: _buildProductCard(moreBySeller[index]),
+                      ),
+                    );
+                  },
+                ),
+              ),
 
-                  // ... (remaining code remains unchanged)
-
-                ])
+              // ... (remaining code remains unchanged)
+            ])
           ],
         ),
       ),
@@ -273,7 +269,8 @@ class ProductDetailScreen extends StatelessWidget {
         ),
       ),
     );
-  }}
+  }
+}
 
 // import 'package:flutter/material.dart';
 

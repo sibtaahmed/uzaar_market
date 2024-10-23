@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/Screens/aboutus.dart';
+import 'package:uzaar_market/Screens/contactus.dart';
 
 import 'package:uzaar_market/Screens/myorders.dart';
+import 'package:uzaar_market/Screens/safety&privacy.dart';
 import 'package:uzaar_market/Screens/sales_orders.dart';
 import 'package:uzaar_market/Screens/setting.dart';
+import 'package:uzaar_market/Screens/termsofuse.dart';
+import 'package:uzaar_market/login.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});
@@ -92,9 +97,10 @@ class SideMenu extends StatelessWidget {
               title: const Text('Term of Use',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               onTap: () {
-                // Navigate to Settings screen
-                Navigator.pop(context);
-                // You can add navigation logic here
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TermsOfUse()));
               },
             ),
             ListTile(
@@ -102,9 +108,8 @@ class SideMenu extends StatelessWidget {
               title: const Text('Safety & Privacy',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               onTap: () {
-                // Navigate to Settings screen
-                Navigator.pop(context);
-                // You can add navigation logic here
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Safety()));
               },
             ),
             ListTile(
@@ -113,7 +118,8 @@ class SideMenu extends StatelessWidget {
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               onTap: () {
                 // Navigate to Settings screen
-                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const ContactUs()));
                 // You can add navigation logic here
               },
             ),
@@ -122,9 +128,9 @@ class SideMenu extends StatelessWidget {
               title: const Text('About Us',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               onTap: () {
-                // Navigate to Settings screen
-                Navigator.pop(context);
-                // You can add navigation logic here
+                 Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Aboutus()));
+             
               },
             ),
 
@@ -134,7 +140,8 @@ class SideMenu extends StatelessWidget {
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               onTap: () {
                 // Handle Logout
-                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Login()));
                 // You can add logout logic here
               },
             ),

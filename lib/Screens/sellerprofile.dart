@@ -205,6 +205,7 @@ import 'package:uzaar_market/Screens/Personalinfo.dart';
 import 'package:uzaar_market/Screens/Reviews.dart';
 import 'package:uzaar_market/Screens/SellerListing.dart';
 import 'package:uzaar_market/Screens/SellerReviews.dart';
+import 'package:uzaar_market/Screens/chats.dart';
 import 'package:uzaar_market/Screens/chatscreen.dart';
 import 'package:uzaar_market/Screens/editprofile.dart';
 import 'package:uzaar_market/Screens/sellerinfo.dart';
@@ -389,12 +390,21 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
                 children: [
                   SvgPicture.asset('assets/images/chat.svg'),
                   const SizedBox(width: 15),
-                  const Text(
-                    'Start Chat',
-                    style: TextStyle(
-                        color: ConstantColor.primaryColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ChatList()),
+                      );
+                    },
+                    child: const Text(
+                      'Start Chat',
+                      style: TextStyle(
+                          color: ConstantColor.primaryColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ],
               ),

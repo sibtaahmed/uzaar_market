@@ -12,8 +12,13 @@ class _notificationState extends State<notification> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notification'),
-        centerTitle: true,
+        title: const Text(
+          'Notification',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+        ),
+        forceMaterialTransparency: true,
+
+        // centerTitle: true,
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -53,7 +58,7 @@ class _notificationState extends State<notification> {
               // const SizedBox(height: 10),
 
               // List of Reviews (placed inside the Column to scroll together with the rest)
-              for (int i = 0; i < 2; i++)
+              for (int i = 0; i < 4; i++)
                 const NotificationCard(), // Example: Display 3 review cards
             ],
           ),
@@ -75,18 +80,18 @@ class NotificationCard extends StatelessWidget {
       ),
       margin: const EdgeInsets.only(bottom: 16.0),
       elevation: 3,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
+      child: const Padding(
+        padding: EdgeInsets.all(16.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // User Profile Image
-            const CircleAvatar(
+            CircleAvatar(
               radius: 30,
               backgroundImage: AssetImage(
-                  'assets/images/joseph.png'), // Replace with your user image asset
+                  'assets/images/Notifylogo.png'), // Replace with your user image asset
             ),
-            const SizedBox(width: 16),
+            SizedBox(width: 16),
 
             // Review Content
             Expanded(
@@ -100,26 +105,26 @@ class NotificationCard extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'Username',
+                          Text(
+                            'Offer Recieved',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Row(
-                            children: List.generate(5, (index) {
-                              return const Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                                size: 20,
-                              );
-                            }),
-                          ),
+                          // Row(
+                          //   children: List.generate(5, (index) {
+                          //     return const Icon(
+                          //       Icons.star,
+                          //       color: Colors.amber,
+                          //       size: 20,
+                          //     );
+                          //   }),
+                          // ),
                         ],
                       ),
-                      const Text(
-                        '08/08/2023',
+                      Text(
+                        '2 min ago',
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 12,
@@ -127,18 +132,18 @@ class NotificationCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
 
                   // Review Text
-                  const Text(
-                    'Lorem ipsum dolor sit amet consectetur...',
+                  Text(
+                    'You have recieved an offer on..',
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey,
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  // SizedBox(height: 10),
 
                   // // Product Image
                   // Image.asset(

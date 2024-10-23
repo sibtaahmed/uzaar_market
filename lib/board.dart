@@ -52,37 +52,39 @@ class _BoardingState extends State<Boarding> {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      onboardingData[index]['image']!,
-                      height: 300,
-                    ),
-                    // const SizedBox(height: 90),
-
-                    Text(
-                      onboardingData[index]['title']!,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.black,
+                child: Container(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 110),
+                        child: SvgPicture.asset(
+                          onboardingData[index]['image']!,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      onboardingData[index]['description']!,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black,
+                      const SizedBox(height: 90),
+                      Text(
+                        onboardingData[index]['title']!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 13,
+                      ),
+                      Text(
+                        onboardingData[index]['description']!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          // fontWeight: FontWeight.w400,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
@@ -112,7 +114,7 @@ class _BoardingState extends State<Boarding> {
                     spacing: 8,
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 90),
                 ElevatedButton(
                   onPressed: () {
                     if (currentPageIndex == onboardingData.length - 1) {

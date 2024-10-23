@@ -9,7 +9,9 @@ import 'package:uzaar_market/Screens/Catagories/products_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/service_list.dart';
 import 'package:uzaar_market/Screens/Catagories/services_catagory.dart';
 import 'package:uzaar_market/Screens/Offers.dart';
+import 'package:uzaar_market/Screens/chats.dart';
 import 'package:uzaar_market/Screens/chatscreen.dart';
+import 'package:uzaar_market/Screens/notification.dart';
 import 'package:uzaar_market/constants.dart';
 
 // // Assuming the 'constants.dart' file defines this class
@@ -51,14 +53,21 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ChatScreen(),
+                  builder: (context) => const ChatList(),
                 ),
               );
             },
           ),
           IconButton(
             icon: SvgPicture.asset('assets/images/bell.svg'),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const notification(),
+                ),
+              );
+            },
           ),
         ],
       ),
