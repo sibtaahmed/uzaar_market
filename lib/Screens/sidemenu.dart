@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uzaar_market/Screens/aboutus.dart';
 import 'package:uzaar_market/Screens/contactus.dart';
 
@@ -10,9 +11,14 @@ import 'package:uzaar_market/Screens/setting.dart';
 import 'package:uzaar_market/Screens/termsofuse.dart';
 import 'package:uzaar_market/login.dart';
 
-class SideMenu extends StatelessWidget {
+class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
 
+  @override
+  State<SideMenu> createState() => _SideMenuState();
+}
+
+class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -128,9 +134,8 @@ class SideMenu extends StatelessWidget {
               title: const Text('About Us',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               onTap: () {
-                 Navigator.push(context,
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const Aboutus()));
-             
               },
             ),
 
@@ -138,10 +143,14 @@ class SideMenu extends StatelessWidget {
               leading: SvgPicture.asset('assets/images/logout.svg'),
               title: const Text('Logout',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-              onTap: () {
+              onTap: () async {
+                await removeDataFormSharedPreferences();
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const Login()),
+                  (Route<dynamic> route) => false,
+                );
                 // Handle Logout
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Login()));
+
                 // You can add logout logic here
               },
             ),
@@ -163,5 +172,11 @@ class SideMenu extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  removeDataFormSharedPreferences() async {
+    var sharedPref = await SharedPreferences.getInstance();
+    await sharedPref.clear();
+    setState(() {});
   }
 }

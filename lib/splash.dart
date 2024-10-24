@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uzaar_market/board.dart';
+import 'package:uzaar_market/main.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -11,16 +13,16 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   @override
-  // void initState() {
-  //   super.initState();
-  //      Timer(const Duration(seconds: 5), () {
-  //     Navigator.pushReplacement(
-  //         context,
-  //         MaterialPageRoute(
-  //           builder: (context) => const board(),
-  //         ));
-  //   });
-  // }
+  oneFun() async {
+    prefs = await SharedPreferences.getInstance();
+    userID = prefs?.getString('userID');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    oneFun();
+  }
 
   @override
   Widget build(BuildContext context) {

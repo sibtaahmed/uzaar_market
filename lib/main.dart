@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uzaar_market/Screens/card.dart';
+import 'package:uzaar_market/Screens/home.dart';
 import 'package:uzaar_market/Screens/product_details_screen.dart';
 import 'package:uzaar_market/firebase_options.dart';
 import 'package:uzaar_market/navBar.dart';
@@ -16,9 +18,17 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+SharedPreferences? prefs;
+String? userID;
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -36,7 +46,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme, // Applying to existing theme
         ),
       ),
-      home: const Splash(),
+      home: userID != null ? const Splash() : const Navbar(),
     );
   }
 }

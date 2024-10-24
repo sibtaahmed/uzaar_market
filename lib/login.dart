@@ -1,6 +1,14 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uzaar_market/Screens/home.dart';
+import 'package:uzaar_market/api_models/login_model.dart';
 import 'package:uzaar_market/constants.dart';
+import 'package:uzaar_market/helper/custom_toast.dart';
+import 'package:uzaar_market/main.dart';
+import 'package:uzaar_market/navBar.dart';
 import 'package:uzaar_market/resetpassword.dart';
 import 'package:uzaar_market/signup.dart';
 import 'package:uzaar_market/verifyemail.dart';
@@ -13,6 +21,42 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  LoginModel loginModel = LoginModel();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  login() async {
+    var headersList = {'Accept': '*/*', 'Content-Type': 'application/json'};
+    var url = Uri.parse('https://b1gpraiseel.net/portal/api/login_with_app');
+
+    var body = {
+      "one_signal_id": "12345",
+      "email": emailController.text,
+      "password": passwordController.text
+    };
+
+    var req = http.Request('POST', url);
+    req.headers.addAll(headersList);
+    req.body = json.encode(body);
+
+    var res = await req.send();
+    final resBody = await res.stream.bytesToString();
+    print(resBody);
+    if (res.statusCode == 200) {
+      loginModel = loginModelFromJson(resBody);
+      setState(() {});
+      print(resBody);
+    } else {
+      print(res.reasonPhrase);
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +97,8 @@ class _LoginState extends State<Login> {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
-                    TextField(
+                    TextFormField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         label: const Text(
                           'username@gmail.com',
@@ -85,7 +130,8 @@ class _LoginState extends State<Login> {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
-                    TextField(
+                    TextFormField(
+                      controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         label: const Text(
@@ -142,11 +188,25 @@ class _LoginState extends State<Login> {
                       height: 40,
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Verifyemail()));
+                      onPressed: () async {
+                        await login();
+                        if (loginModel.status == "success") {
+                          CustomToast.showToast(message: 'Login Successfully');
+                          prefs = await SharedPreferences.getInstance();
+                          // await prefs?.setString('userID',
+                          //     "${loginUserModels.data?.passportHolderId}");
+                          userID =
+                              loginModel.data?.usersCustomersId.toString() ??
+                                  "";
+                          await prefs?.setString('userID', userID!);
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Navbar()));
+                        } else {
+                          CustomToast.showToast(message: 'Login Failed');
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF450e8b),
