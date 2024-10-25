@@ -250,7 +250,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>  ChatList(),
+                  builder: (context) => const ChatList(),
                 ),
               );
             },
@@ -770,7 +770,7 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: Container(
-        width: 160,
+        width: 158,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: Colors.white,

@@ -30,6 +30,7 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
     'Housing',
   ];
   int selectedTabIndex = 0;
+  int tapping = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,9 +89,11 @@ class _SearchProductScreenState extends State<SearchProductScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
+
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Container(
+                      
                       decoration: BoxDecoration(
                         gradient: index == selectedTabIndex
                             ? const LinearGradient(

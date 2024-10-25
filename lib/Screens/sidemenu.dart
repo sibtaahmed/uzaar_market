@@ -10,6 +10,7 @@ import 'package:uzaar_market/Screens/sales_orders.dart';
 import 'package:uzaar_market/Screens/setting.dart';
 import 'package:uzaar_market/Screens/termsofuse.dart';
 import 'package:uzaar_market/login.dart';
+import 'package:uzaar_market/main.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
@@ -175,8 +176,9 @@ class _SideMenuState extends State<SideMenu> {
   }
 
   removeDataFormSharedPreferences() async {
-    var sharedPref = await SharedPreferences.getInstance();
-    await sharedPref.clear();
+    prefs = await SharedPreferences.getInstance();
+    await prefs?.clear();
+    // prefs?.remove('userID');
     setState(() {});
   }
 }

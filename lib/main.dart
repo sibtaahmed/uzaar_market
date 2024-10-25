@@ -29,6 +29,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  one() async {
+    prefs = await SharedPreferences.getInstance();
+    userID = prefs!.getString('userID');
+    print('userID: $userID');
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    one();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

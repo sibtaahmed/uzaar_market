@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/Screens/Catagories/housing_catagory.dart';
+import 'package:uzaar_market/Screens/Catagories/products_catagory.dart';
+import 'package:uzaar_market/Screens/Catagories/services_catagory.dart';
+import 'package:uzaar_market/Screens/addProduct0.dart';
+import 'package:uzaar_market/Screens/addProduct2.dart';
 import 'package:uzaar_market/Screens/chats.dart';
 import 'package:uzaar_market/Screens/chatscreen.dart';
+import 'package:uzaar_market/Screens/addProduct1.dart';
 import 'package:uzaar_market/Screens/notification.dart';
 import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';
@@ -67,6 +73,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
     });
   }
 
+  final List<String> categories = [
+    'Products',
+    'Services',
+    'Housing',
+  ];
+  int selectedTabIndex = 0;
+  int tapping = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,91 +132,78 @@ class _AddProductScreenState extends State<AddProductScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // SmoothPageIndicator
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buttons('', 0),
-                _buttons('', 1),
-                _buttons('', 2),
-              ],
-            ),
-
-            const SizedBox(height: 20),
-
-            // Question Text
-            const Text(
-              "What do you want to sell?",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-
-            // Category Buttons for Products, Services, Housing
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildOptionButton('Products', 0),
-                _buildOptionButton('Services', 1),
-                _buildOptionButton('Housing', 2),
-              ],
-            ),
-            const SizedBox(height: 30),
-
-            // Upload Section
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Upload or Take Picture',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(colors: [
-                        ConstantColor.primaryColor,
-                        ConstantColor.orangeColor
-                      ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                      // color: Colors.grey,
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: SvgPicture.asset(
-                        'assets/images/camera.svg',
-                        height: 10,
-                        width: 10,
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 24,
+                right: 10,
+              ),
+              child: SizedBox(
+                height: 50,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    tapping = index;
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: index == selectedTabIndex
+                              ? const LinearGradient(
+                                  colors: [
+                                    ConstantColor.primaryColor,
+                                    ConstantColor.orangeColor
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                )
+                              : LinearGradient(
+                                  colors: [
+                                    Colors.grey[100]!,
+                                    Colors.grey[100]!
+                                  ],
+                                ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              selectedTabIndex = index;
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: const StadiumBorder(),
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            foregroundColor: index == selectedTabIndex
+                                ? Colors.white
+                                : ConstantColor.darkgreyColor,
+                          ),
+                          child: const Text(' '),
+                        ),
                       ),
-                    )),
-              ],
-            ),
-            const SizedBox(height: 20),
-
-            // Placeholder for Image Upload
-            Expanded(
-              child: Center(
-                child: Container(
-                  height: 150,
-                  width: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade100,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Colors.grey.shade300),
-                  ),
-                  child: IconButton(
-                    icon: SvgPicture.asset('assets/images/upload.svg'),
-                    iconSize: 10,
-                    onPressed: () {},
-                  ),
+                    );
+                  },
                 ),
               ),
+            ),
+            Expanded(
+              child:
+                  getScreenForSelectedTab(), // Display screen based on selected tab
             ),
 
             // Next Button at the Bottom
             ElevatedButton(
               onPressed: () {
-                changeIndex();
+                setState(() {
+                  // If selectedTabIndex is the last, reset to the first tab
+                  if (selectedTabIndex == categories.length - 1) {
+                    selectedTabIndex = 0;
+                  } else {
+                    selectedTabIndex++; // Move to the next tab
+                  }
+                });
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF450e8b),
@@ -225,6 +226,19 @@ class _AddProductScreenState extends State<AddProductScreen> {
         ),
       ),
     );
+  }
+
+  Widget getScreenForSelectedTab() {
+    switch (selectedTabIndex) {
+      case 0:
+        return const Addproduct0(); // Replace with your Products screen widget
+      case 1:
+        return const ProductFormScreen(); // Replace with your Services screen widget
+      case 2:
+        return const Addproduct2(); // Replace with your Housing screen widget
+      default:
+        return const Addproduct0();
+    }
   }
 
   Widget _buildOptionButton(String text, int index) {
