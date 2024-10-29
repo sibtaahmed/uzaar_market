@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
     final resBody = await res.stream.bytesToString();
     print(resBody);
     if (res.statusCode == 200) {
-      loginModel = loginModelFromJson(resBody);
+      loginModel = loginModelFromJson(resBody);;
       setState(() {});
       print(resBody);
     } else {
@@ -192,13 +192,13 @@ class _LoginState extends State<Login> {
                         await login();
                         if (loginModel.status == "success") {
                           CustomToast.showToast(message: 'Login Successfully');
-                          prefs = await SharedPreferences.getInstance();
-                          // await prefs?.setString('userID',
-                          //     "${loginUserModels.data?.passportHolderId}");
-                          userID =
-                              loginModel.data?.usersCustomersId.toString() ??
-                                  "";
-                          await prefs?.setString('userID', userID!);
+                          // prefs = await SharedPreferences.getInstance();
+                          // // await prefs?.setString('userID',
+                          // //     "${loginUserModels.data?.passportHolderId}");
+                          // userID =
+                          //     loginModel.data?.usersCustomersId.toString() ??
+                          //         "";
+                          // await prefs?.setString('userID', userID!);
 
                           Navigator.push(
                               context,

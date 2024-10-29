@@ -4,7 +4,6 @@ import 'package:uzaar_market/Screens/Catagories/housing_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/products_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/services_catagory.dart';
 import 'package:uzaar_market/Screens/chats.dart';
-import 'package:uzaar_market/Screens/chatscreen.dart';
 import 'package:uzaar_market/Screens/notification.dart';
 import 'package:uzaar_market/Screens/sidemenu.dart';
 import 'package:uzaar_market/constants.dart';

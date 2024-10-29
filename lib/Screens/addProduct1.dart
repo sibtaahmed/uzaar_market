@@ -195,3 +195,6 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     );
   }
 }
+
+
+// is screen sa data service screen k page 2 pa dalna ha

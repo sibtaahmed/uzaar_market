@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:uzaar_market/Screens/Catagories/housing_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/products_catagory.dart';
 import 'package:uzaar_market/Screens/Catagories/services_catagory.dart';
+import 'package:uzaar_market/Screens/HousingCategory1.dart';
+import 'package:uzaar_market/Screens/HousingCategory2.dart';
+import 'package:uzaar_market/Screens/HousingCategory3.dart';
+import 'package:uzaar_market/Screens/ServiceCategory1.dart';
+import 'package:uzaar_market/Screens/ServiceCategory2.dart';
+import 'package:uzaar_market/Screens/ServiceCategory3.dart';
 import 'package:uzaar_market/Screens/addProduct0.dart';
 import 'package:uzaar_market/Screens/addProduct2.dart';
 import 'package:uzaar_market/Screens/chats.dart';
@@ -20,66 +27,29 @@ class AddProductScreen extends StatefulWidget {
 }
 
 class _AddProductScreenState extends State<AddProductScreen> {
-  Widget _buttons(String text, int index) {
-    bool isSelected = _selectedIndex1 == index;
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedIndex1 = index;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 25,
-        ),
-        decoration: BoxDecoration(
-          gradient: isSelected
-              ? const LinearGradient(
-                  colors: [
-                    ConstantColor.primaryColor,
-                    ConstantColor.orangeColor
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                )
-              : null,
-          color: isSelected ? null : Colors.grey.shade100,
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: isSelected ? Colors.white : ConstantColor.darkgreyColor,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-
-  int _selectedIndex = 0;
-  int _selectedIndex1 = 0;
-
-  final PageController pageController = PageController(initialPage: 0);
-  void changeIndex() {
-    setState(() {
-      // Increment the selected index and wrap around if it exceeds the number of buttons
-      if (_selectedIndex1 < 3 - 1) {
-        _selectedIndex1++;
-      } else {
-        _selectedIndex1 =
-            0; // Wrap around to the first button if the last one is reached
-      }
-    });
-  }
+  int selectedTabIndex = 0;
+  int currentPageIndex = 0;
+  PageController pageController = PageController();
 
   final List<String> categories = [
-    'Products',
-    'Services',
+    'Product',
+    'Service',
     'Housing',
   ];
-  int selectedTabIndex = 0;
-  int tapping = 0;
+
+  final List<List<Widget>> categoryPages = [
+    [const Addproduct0(), const ProductFormScreen(), const Addproduct2()],
+    [
+      const ServiceCategory1(),
+      const ServiceCategory2(),
+      // const ServiceCategory3()
+    ],
+    [
+      const HousingCategory1(),
+      const HousingCategory2(),
+      // const HousingCategory3()
+    ],
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -132,145 +102,142 @@ class _AddProductScreenState extends State<AddProductScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 24,
-                right: 10,
-              ),
-              child: SizedBox(
-                height: 50,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    tapping = index;
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: index == selectedTabIndex
-                              ? const LinearGradient(
-                                  colors: [
-                                    ConstantColor.primaryColor,
-                                    ConstantColor.orangeColor
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                )
-                              : LinearGradient(
-                                  colors: [
-                                    Colors.grey[100]!,
-                                    Colors.grey[100]!
-                                  ],
-                                ),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              selectedTabIndex = index;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: const StadiumBorder(),
-                            backgroundColor: Colors.transparent,
-                            shadowColor: Colors.transparent,
-                            foregroundColor: index == selectedTabIndex
-                                ? Colors.white
-                                : ConstantColor.darkgreyColor,
-                          ),
-                          child: const Text(' '),
-                        ),
-                      ),
-                    );
+            // Category Buttons
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List.generate(categories.length, (index) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedTabIndex = index;
+                      pageController.jumpToPage(0); // Reset to first page
+                    });
                   },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      gradient: index == selectedTabIndex
+                          ? const LinearGradient(
+                              colors: [
+                                ConstantColor.primaryColor,
+                                ConstantColor.orangeColor,
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            )
+                          : LinearGradient(
+                              colors: [
+                                Colors.grey[300]!,
+                                Colors.grey[300]!,
+                              ],
+                            ),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Text(
+                      categories[index],
+                      style: TextStyle(
+                        color: index == selectedTabIndex
+                            ? Colors.white
+                            : ConstantColor.darkgreyColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            ),
+            const SizedBox(height: 16),
+
+            // Smooth Page Indicator
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: SmoothPageIndicator(
+                  controller: pageController,
+                  count: categoryPages[selectedTabIndex].length,
+                  effect: CustomizableEffect(
+                    activeDotDecoration: DotDecoration(
+                      width: 40,
+                      height: 15,
+                      borderRadius: BorderRadius.circular(50),
+                      color: ConstantColor.primaryColor,
+                      dotBorder: const DotBorder(
+                        color: Colors.transparent,
+                        width: 0,
+                      ),
+                      // Removed paintStyle parameter
+                      // Applying gradient to the active dot
+                    ),
+                    dotDecoration: DotDecoration(
+                      width: 40,
+                      height: 15,
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    spacing: 8,
+                  ),
                 ),
               ),
             ),
+
+            const SizedBox(height: 16),
+
+            // PageView for Category Pages
             Expanded(
-              child:
-                  getScreenForSelectedTab(), // Display screen based on selected tab
+              child: PageView.builder(
+                controller: pageController,
+                itemCount: categoryPages[selectedTabIndex].length,
+                onPageChanged: (index) {
+                  setState(() {
+                    currentPageIndex = index;
+                  });
+                },
+                itemBuilder: (context, pageIndex) {
+                  return categoryPages[selectedTabIndex][pageIndex];
+                },
+              ),
             ),
-
-            // Next Button at the Bottom
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  // If selectedTabIndex is the last, reset to the first tab
-                  if (selectedTabIndex == categories.length - 1) {
-                    selectedTabIndex = 0;
+            const SizedBox(height: 16),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  if (currentPageIndex ==
+                      categoryPages[selectedTabIndex].length - 1) {
+                    // Navigate to the next screen or finish the onboarding
+                    // Navigator.pushReplacement(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const Signup()),
+                    // );
                   } else {
-                    selectedTabIndex++; // Move to the next tab
+                    pageController.nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn,
+                    );
                   }
-                });
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF450e8b),
-                shadowColor: Colors.black,
-                elevation: 5,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
+                },
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 140, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  backgroundColor: ConstantColor.primaryColor,
                 ),
-              ),
-              child: const Center(
                 child: Text(
-                  'Next',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  currentPageIndex == categoryPages[selectedTabIndex].length - 1
+                      ? 'Continue'
+                      : 'Next',
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
               ),
-            ),
+            )
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget getScreenForSelectedTab() {
-    switch (selectedTabIndex) {
-      case 0:
-        return const Addproduct0(); // Replace with your Products screen widget
-      case 1:
-        return const ProductFormScreen(); // Replace with your Services screen widget
-      case 2:
-        return const Addproduct2(); // Replace with your Housing screen widget
-      default:
-        return const Addproduct0();
-    }
-  }
-
-  Widget _buildOptionButton(String text, int index) {
-    bool isSelected = _selectedIndex == index;
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedIndex = index;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        decoration: BoxDecoration(
-          gradient: isSelected
-              ? const LinearGradient(
-                  colors: [
-                    ConstantColor.primaryColor,
-                    ConstantColor.orangeColor
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                )
-              : null,
-          color: isSelected ? null : Colors.grey.shade100,
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: isSelected ? Colors.white : ConstantColor.darkgreyColor,
-            fontWeight: FontWeight.bold,
-          ),
         ),
       ),
     );
