@@ -34,7 +34,7 @@ class _Addproduct0State extends State<Addproduct0> {
           //     _buildOptionButton('Housing', 2),
           //   ],
           // ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 10),
 
           // Upload Section
           Row(

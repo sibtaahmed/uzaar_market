@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uzaar_market/Screens/chats.dart';
+import 'package:uzaar_market/main.dart';
 import 'chatscreen.dart';
 import 'package:uzaar_market/Screens/housing_details_Screen.dart';
 import 'package:uzaar_market/Screens/notification.dart';
@@ -202,9 +204,25 @@ class _HomePageState extends State<HomePage> {
     },
     // Add more services here
   ];
+  one() async {
+    prefs = await SharedPreferences.getInstance();
+    userID = prefs!.getString('userID');
+    userName = prefs!.getString('userName');
+    userEmail = prefs!.getString('userEmail');
+    userPhone = prefs!.getString('userPhone');
+    userImage = prefs!.getString('userImage');
+    print('userID: $userID');
+    print('userName: $userName');
+    print('userEmail: $userEmail');
+    print('userPhone: $userPhone');
+    print('userImage: $userImage');
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
+    one();
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
@@ -230,16 +248,16 @@ class _HomePageState extends State<HomePage> {
             },
           );
         }),
-        title: const Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Good Morning!',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
             ),
             Text(
-              'John',
-              style: TextStyle(color: Colors.grey, fontSize: 16),
+              '$userName',
+              style: const TextStyle(color: Colors.grey, fontSize: 16),
             ),
           ],
         ),

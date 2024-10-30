@@ -130,8 +130,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             )
                           : LinearGradient(
                               colors: [
-                                Colors.grey[300]!,
-                                Colors.grey[300]!,
+                                Colors.grey[100]!,
+                                Colors.grey[100]!,
                               ],
                             ),
                       borderRadius: BorderRadius.circular(30),
@@ -174,7 +174,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     dotDecoration: DotDecoration(
                       width: 40,
                       height: 15,
-                      color: Colors.grey,
+                      color: Colors.grey[200]!,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     spacing: 8,

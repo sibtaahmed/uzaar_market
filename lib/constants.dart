@@ -16,6 +16,9 @@ class ConstantColor {
   static const Color overlayColor = Color(0x80000000);
 }
 
+   String baseImageURL = "https://b1gpraiseel.net/portal/public/";
+
+
 class ConstantIconPath {
   static String logoSvgPath = "assets/images/Logo.svg";
   static String logoPngPath = "assets/images/Logo.png";
@@ -29,6 +32,6 @@ class ConstantIconPath {
   static String paypalSvgPath = "assets/images/paypal.svg";
   static String zelleSvgPath = "assets/images/zelle.svg";
   static String cashappSvgPath = "assets/images/cashapp.svg";
-
-
 }
+
+

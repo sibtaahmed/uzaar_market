@@ -9,6 +9,7 @@ import 'package:uzaar_market/Screens/safety&privacy.dart';
 import 'package:uzaar_market/Screens/sales_orders.dart';
 import 'package:uzaar_market/Screens/setting.dart';
 import 'package:uzaar_market/Screens/termsofuse.dart';
+import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/login.dart';
 import 'package:uzaar_market/main.dart';
 
@@ -20,6 +21,28 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  one() async {
+    prefs = await SharedPreferences.getInstance();
+    userID = prefs!.getString('userID');
+    userName = prefs!.getString('userName');
+    userEmail = prefs!.getString('userEmail');
+    userPhone = prefs!.getString('userPhone');
+    userImage = prefs!.getString('userImage');
+    print('userID: $userID');
+    print('userName: $userName');
+    print('userEmail: $userEmail');
+    print('userPhone: $userPhone');
+    print('userImage: $userImage');
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    one();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -45,19 +68,24 @@ class _SideMenuState extends State<SideMenu> {
             Padding(
               padding: const EdgeInsets.only(
                 top: 40.0,
-                left: 10,
-                right: 10,
+                right: 20,
                 bottom: 10,
               ),
-              child: SizedBox(
-                width: 100,
-                height: 100,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image.asset(
-                      'assets/images/lisa1.png',
-                    )),
+              child: CircleAvatar(
+                radius: 60,
+                backgroundImage: NetworkImage("$baseImageURL$userImage"),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 10.0,
+                right: 20,
+              ),
+              child: Center(
+                  child: Text(
+                '$userName',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              )),
             ),
             const SizedBox(
               height: 25,
@@ -178,7 +206,7 @@ class _SideMenuState extends State<SideMenu> {
   removeDataFormSharedPreferences() async {
     prefs = await SharedPreferences.getInstance();
     await prefs?.clear();
-    // prefs?.remove('userID');
+    prefs?.remove('userID');
     setState(() {});
   }
 }

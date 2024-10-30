@@ -20,6 +20,11 @@ Future<void> main() async {
 
 SharedPreferences? prefs;
 String? userID;
+String? userName;
+String? userEmail;
+String? userPhone;
+String? userImage;
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -32,7 +37,16 @@ class _MyAppState extends State<MyApp> {
   one() async {
     prefs = await SharedPreferences.getInstance();
     userID = prefs!.getString('userID');
+    userName = prefs!.getString('userName');
+    userEmail = prefs!.getString('userEmail');
+    userPhone = prefs!.getString('userPhone');
+    userImage = prefs!.getString('userImage');
     print('userID: $userID');
+    print('userName: $userName');
+    print('userEmail: $userEmail');
+    print('userPhone: $userPhone');
+    print('userImage: $userImage');
+    setState(() {});
   }
 
   @override
@@ -50,7 +64,7 @@ class _MyAppState extends State<MyApp> {
     ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Uzaar Market',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -59,7 +73,7 @@ class _MyAppState extends State<MyApp> {
           Theme.of(context).textTheme, // Applying to existing theme
         ),
       ),
-      home: userID != null ? const Splash() : const Navbar(),
+      home: userID != null ? const Navbar() : const Splash(),
     );
   }
 }

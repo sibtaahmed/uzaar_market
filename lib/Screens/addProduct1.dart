@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:uzaar_market/constants.dart';
 
 class ProductFormScreen extends StatefulWidget {
   const ProductFormScreen({super.key});
@@ -64,9 +66,20 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
               const SizedBox(height: 5),
               TextFormField(
                 initialValue: 'Iphone14',
+                style: const TextStyle(color: Colors.grey),
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.inventory_2_outlined),
-                  border: OutlineInputBorder(
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SvgPicture.asset('assets/images/iphone14.svg'),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ConstantColor.lightgreyColor),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ConstantColor.darkgreyColor),
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
@@ -86,8 +99,19 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 value: _selectedCategory,
                 decoration: InputDecoration(
                   hintText: "Select category",
-                  prefixIcon: const Icon(Icons.category),
-                  border: OutlineInputBorder(
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SvgPicture.asset('assets/images/category.svg'),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ConstantColor.lightgreyColor),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ConstantColor.darkgreyColor),
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
@@ -126,7 +150,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                           });
                         },
                       ),
-                      const Text('New'),
+                      const Text(
+                        'New',
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                   const SizedBox(width: 16),
@@ -141,7 +168,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                           });
                         },
                       ),
-                      const Text('Used'),
+                      const Text(
+                        'Used',
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ],
                   ),
                 ],
@@ -159,9 +189,17 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
               const SizedBox(height: 5),
               TextFormField(
                 initialValue: 'Description here',
+                style: const TextStyle(color: Colors.grey),
                 maxLines: 3,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ConstantColor.lightgreyColor),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ConstantColor.darkgreyColor),
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
@@ -179,10 +217,18 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
               const SizedBox(height: 5),
               TextFormField(
                 initialValue: '\$120',
+                style: const TextStyle(color: Colors.grey),
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.attach_money),
-                  border: OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ConstantColor.lightgreyColor),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: ConstantColor.darkgreyColor),
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),

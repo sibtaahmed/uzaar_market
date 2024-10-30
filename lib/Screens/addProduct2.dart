@@ -27,6 +27,7 @@ class _Addproduct2State extends State<Addproduct2> {
           const SizedBox(height: 5),
           TextFormField(
             initialValue: 'Enter Minimum Price',
+            style: const TextStyle(color: Colors.grey),
             decoration: InputDecoration(
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -40,13 +41,13 @@ class _Addproduct2State extends State<Addproduct2> {
             ),
           ),
           const SizedBox(height: 20),
-         const Align(
+          const Align(
             alignment: Alignment.centerLeft,
             child: Text(
               '*Boost your listings now to get more  orders or you can boost later',
               style: TextStyle(
                 fontSize: 14,
-              ), 
+              ),
             ),
           ),
           const SizedBox(height: 20),
@@ -62,6 +63,7 @@ class _Addproduct2State extends State<Addproduct2> {
             value: _selectedCategory,
             decoration: InputDecoration(
               hintText: 'Select opttion',
+              hintStyle: const TextStyle(color: Colors.grey),
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SvgPicture.asset(

@@ -125,7 +125,7 @@ class _BoardingState extends State<Boarding> {
                       );
                     } else {
                       pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 300),
                         curve: Curves.easeIn,
                       );
                     }
