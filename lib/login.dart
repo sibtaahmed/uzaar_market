@@ -394,6 +394,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uzaar_market/Screens/home.dart';
+import 'package:uzaar_market/api_models/guest_model.dart';
 import 'package:uzaar_market/api_models/login_model.dart';
 import 'package:uzaar_market/constants.dart';
 import 'package:uzaar_market/helper/custom_toast.dart';
@@ -412,10 +413,33 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   LoginModel loginModel = LoginModel();
+  GuestModel guestModel = GuestModel();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool passwordobscure = true;
   bool isLoading = false;
+
+  guest() async {
+    var headersList = {
+      'Accept': '*/*',
+      'User-Agent': 'Thunder Client (https://www.thunderclient.com)'
+    };
+    var url = Uri.parse('https://b1gpraiseel.net/portal/api/continue_as_guest');
+
+    var req = http.Request('POST', url);
+    req.headers.addAll(headersList);
+
+    var res = await req.send();
+    final resBody = await res.stream.bytesToString();
+
+    if (res.statusCode == 200) {
+      guestModel = guestModelFromJson(resBody);
+      setState(() {});
+      print(resBody);
+    } else {
+      print(res.reasonPhrase);
+    }
+  }
 
   login() async {
     setState(() {
@@ -642,7 +666,6 @@ class _LoginState extends State<Login> {
                                   int i,
                                 ) {
                                   return DecoratedBox(
-                                    
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
                                       color: Colors.white,
@@ -757,25 +780,38 @@ class _LoginState extends State<Login> {
                         borderRadius: BorderRadius.circular(
                             80), // Optional: rounded corners
                       ),
-                      child: const SizedBox(
-                        height: 54,
-                        width: 330,
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Continue as Guest",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xFF450e8b),
+                      child: GestureDetector(
+                        onTap: () async {
+                          await guest();
+
+                          if (guestModel.status == 'success') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Navbar()),
+                            );
+                          }
+                        },
+                        child: const SizedBox(
+                          height: 54,
+                          width: 330,
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Continue as Guest",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xFF450e8b),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 9,
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 9,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
