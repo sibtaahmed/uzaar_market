@@ -96,6 +96,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
               ),
               const SizedBox(height: 5),
               DropdownButtonFormField<String>(
+                dropdownColor: Colors.white,
                 value: _selectedCategory,
                 decoration: InputDecoration(
                   hintText: "Select category",

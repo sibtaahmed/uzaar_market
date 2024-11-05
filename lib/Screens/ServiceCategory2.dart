@@ -68,6 +68,7 @@ class _ServiceCategory2State extends State<ServiceCategory2> {
               ),
               const SizedBox(height: 5),
               DropdownButtonFormField<String>(
+                dropdownColor: Colors.white,
                 value: _selectedCategory,
                 decoration: InputDecoration(
                   hintText: "Select category",
@@ -240,6 +241,7 @@ class _ServiceCategory2State extends State<ServiceCategory2> {
               ),
               const SizedBox(height: 5),
               DropdownButtonFormField<String>(
+                dropdownColor: Colors.white,
                 value: _selectedCategory,
                 decoration: InputDecoration(
                   hintText: 'Select Opttion',

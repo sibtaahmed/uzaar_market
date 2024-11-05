@@ -59,6 +59,7 @@ class _HousingCategory2State extends State<HousingCategory2> {
             ),
             const SizedBox(height: 5),
             DropdownButtonFormField<String>(
+              dropdownColor: Colors.white,
               value: _selectedCategory,
               decoration: InputDecoration(
                 hintText: "Rental",
